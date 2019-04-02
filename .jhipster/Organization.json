@@ -1,0 +1,103 @@
+{
+    "name": "Organization",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enabled",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "orderId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "siteUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "repository",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "thumbnail",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "sorlCore",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "approvalDateEnabled",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "effectiveDateEnabled",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "originalDateEnabled",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "reviewDateEnabled",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "revisionDateEnabled",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "supersedesDateEnabled",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "manual",
+            "otherEntityRelationshipName": "organization",
+            "relationshipName": "manuals"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "logEntry",
+            "otherEntityRelationshipName": "organization",
+            "relationshipName": "log"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "report",
+            "otherEntityRelationshipName": "organization",
+            "relationshipName": "reports"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "userGroup",
+            "otherEntityRelationshipName": "organizations",
+            "relationshipName": "groups",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "role",
+            "otherEntityRelationshipName": "organizations",
+            "relationshipName": "roles",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190402214108",
+    "entityTableName": "organization",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

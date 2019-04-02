@@ -1,0 +1,83 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="manual">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.manual.detail.title">Manual</span> {{manual.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.manual.name">Name</span></dt>
+                <dd>
+                    <span>{{manual.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.manual.code">Code</span></dt>
+                <dd>
+                    <span>{{manual.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.manual.enabled">Enabled</span></dt>
+                <dd>
+                    <span>{{manual.enabled}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.manual.link">Link</span></dt>
+                <dd>
+                    <span>{{manual.link}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.manual.description">Description</span></dt>
+                <dd>
+                    <span>{{manual.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.manual.trackChangesEnabled">Track Changes Enabled</span></dt>
+                <dd>
+                    <span>{{manual.trackChangesEnabled}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.manual.retired">Retired</span></dt>
+                <dd>
+                    <span>{{manual.retired}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.manual.retiredDate">Retired Date</span></dt>
+                <dd>
+                    <span>{{manual.retiredDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.manual.retiredNote">Retired Note</span></dt>
+                <dd>
+                    <span>{{manual.retiredNote}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.manual.lock">Lock</span></dt>
+                <dd>
+                    <div *ngIf="manual.lock">
+                        <a [routerLink]="['/lock', manual.lock?.id, 'view']">{{manual.lock?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.manual.defaultTemplate">Default Template</span></dt>
+                <dd>
+                    <div *ngIf="manual.defaultTemplate">
+                        <a [routerLink]="['/document-template', manual.defaultTemplate?.id, 'view']">{{manual.defaultTemplate?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.manual.manualType">Manual Type</span></dt>
+                <dd>
+                    <span *ngFor="let manualType of manual.manualTypes; let last = last">
+                        <a [routerLink]="['/manual-type', manualType?.id, 'view' ]">{{manualType.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.manual.organization">Organization</span></dt>
+                <dd>
+                    <div *ngIf="manual.organization">
+                        <a [routerLink]="['/organization', manual.organization?.id, 'view']">{{manual.organization?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/manual', manual.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

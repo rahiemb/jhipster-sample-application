@@ -1,0 +1,52 @@
+{
+    "name": "DocumentTemplate",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "primaryHeader",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "primaryFooter",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "appendixHeader",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "appendixFooter",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enabled",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "documentTemplatePart",
+            "otherEntityRelationshipName": "documentTemplate",
+            "relationshipName": "sections"
+        },
+        {
+            "relationshipName": "manual",
+            "otherEntityName": "manual",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190402214058",
+    "entityTableName": "document_template",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

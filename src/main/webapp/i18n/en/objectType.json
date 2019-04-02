@@ -1,0 +1,17 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "ObjectType": {
+            "null": "",
+            "CATEGORY": "CATEGORY",
+            "DOCUMENT": "DOCUMENT",
+            "MANUAL": "MANUAL",
+            "NOTIFICATION": "NOTIFICATION",
+            "ORGANIZATION": "ORGANIZATION",
+            "REPORT": "REPORT",
+            "SECTION": "SECTION",
+            "SECURITY": "SECURITY",
+            "SYSTEM": "SYSTEM",
+            "USER": "USER"
+        }
+    }
+}

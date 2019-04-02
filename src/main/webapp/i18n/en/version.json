@@ -1,0 +1,28 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "version": {
+            "home": {
+                "title": "Versions",
+                "createLabel": "Create a new Version",
+                "createOrEditLabel": "Create or edit a Version"
+            },
+            "created": "A new Version is created with identifier {{ param }}",
+            "updated": "A Version is updated with identifier {{ param }}",
+            "deleted": "A Version is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Version {{ id }}?"
+            },
+            "detail": {
+                "title": "Version"
+            },
+            "versionMajor": "Version Major",
+            "versionMinor": "Version Minor",
+            "versionDraft": "Version Draft",
+            "published": "Published",
+            "document": "Document",
+            "summary": "Summary",
+            "parts": "Parts",
+            "workflow": "Workflow"
+        }
+    }
+}

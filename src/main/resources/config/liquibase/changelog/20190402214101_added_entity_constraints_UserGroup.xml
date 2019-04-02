@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity UserGroup.
+    -->
+    <changeSet id="20190402214101-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="user_group_id"
+                                 baseTableName="user_group_roles"
+                                 constraintName="fk_user_group_roles_user_group_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_group"/>
+        <addForeignKeyConstraint baseColumnNames="roles_id"
+                                 baseTableName="user_group_roles"
+                                 constraintName="fk_user_group_roles_roles_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="role"/>
+        
+        <addForeignKeyConstraint baseColumnNames="user_group_id"
+                                 baseTableName="user_group_abilities"
+                                 constraintName="fk_user_group_abilities_user_group_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_group"/>
+        <addForeignKeyConstraint baseColumnNames="abilities_id"
+                                 baseTableName="user_group_abilities"
+                                 constraintName="fk_user_group_abilities_abilities_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ability"/>
+        
+        <addForeignKeyConstraint baseColumnNames="step_id"
+                                 baseTableName="user_group"
+                                 constraintName="fk_user_group_step_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="step"/>
+
+    </changeSet>
+</databaseChangeLog>

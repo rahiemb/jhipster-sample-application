@@ -1,0 +1,58 @@
+{
+    "name": "Action",
+    "fields": [
+        {
+            "fieldName": "step",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "recipient",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "notified",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "originationTimestamp",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "responseTimestamp",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "action",
+            "relationshipName": "recipient",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "version",
+            "otherEntityRelationshipName": "action",
+            "relationshipName": "version",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipName": "step",
+            "otherEntityName": "step",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190402214052",
+    "entityTableName": "action",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

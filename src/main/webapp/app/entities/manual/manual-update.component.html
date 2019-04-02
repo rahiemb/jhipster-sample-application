@@ -1,0 +1,101 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-manual-heading" jhiTranslate="jhipsterSampleApplicationApp.manual.home.createOrEditLabel">Create or edit a Manual</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!manual.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="manual.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.manual.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="manual.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.manual.code" for="field_code">Code</label>
+                    <input type="text" class="form-control" name="code" id="field_code"
+                        [(ngModel)]="manual.code" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.manual.enabled" for="field_enabled">Enabled</label>
+                    <input type="checkbox" class="form-control" name="enabled" id="field_enabled"
+                        [(ngModel)]="manual.enabled" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.manual.link" for="field_link">Link</label>
+                    <input type="text" class="form-control" name="link" id="field_link"
+                        [(ngModel)]="manual.link" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.manual.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                        [(ngModel)]="manual.description" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.manual.trackChangesEnabled" for="field_trackChangesEnabled">Track Changes Enabled</label>
+                    <input type="checkbox" class="form-control" name="trackChangesEnabled" id="field_trackChangesEnabled"
+                        [(ngModel)]="manual.trackChangesEnabled" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.manual.retired" for="field_retired">Retired</label>
+                    <input type="checkbox" class="form-control" name="retired" id="field_retired"
+                        [(ngModel)]="manual.retired" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.manual.retiredDate" for="field_retiredDate">Retired Date</label>
+                    <div class="input-group">
+                        <input id="field_retiredDate" type="text" class="form-control" name="retiredDate" ngbDatepicker  #retiredDateDp="ngbDatepicker" [(ngModel)]="manual.retiredDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="retiredDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.manual.retiredNote" for="field_retiredNote">Retired Note</label>
+                    <input type="text" class="form-control" name="retiredNote" id="field_retiredNote"
+                        [(ngModel)]="manual.retiredNote" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.manual.lock" for="field_lock">Lock</label>
+                    <select class="form-control" id="field_lock" name="lock" [(ngModel)]="manual.lock">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="lockOption.id === manual.lock?.id ? manual.lock : lockOption" *ngFor="let lockOption of locks; trackBy: trackLockById">{{lockOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.manual.defaultTemplate" for="field_defaultTemplate">Default Template</label>
+                    <select class="form-control" id="field_defaultTemplate" name="defaultTemplate" [(ngModel)]="manual.defaultTemplate">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="documentTemplateOption.id === manual.defaultTemplate?.id ? manual.defaultTemplate : documentTemplateOption" *ngFor="let documentTemplateOption of defaulttemplates; trackBy: trackDocumentTemplateById">{{documentTemplateOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="jhipsterSampleApplicationApp.manual.manualType" for="field_manualType">Manual Type</label>
+                    <select class="form-control" id="field_manualType" multiple name="manualType" [(ngModel)]="manual.manualTypes">
+                        <option [ngValue]="getSelected(manual.manualTypes, manualTypeOption)" *ngFor="let manualTypeOption of manualtypes; trackBy: trackManualTypeById">{{manualTypeOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.manual.organization" for="field_organization">Organization</label>
+                    <select class="form-control" id="field_organization" name="organization" [(ngModel)]="manual.organization" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="organizationOption.id === manual.organization?.id ? manual.organization : organizationOption" *ngFor="let organizationOption of organizations; trackBy: trackOrganizationById">{{organizationOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

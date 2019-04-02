@@ -1,0 +1,36 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "manual": {
+            "home": {
+                "title": "Manuals",
+                "createLabel": "Create a new Manual",
+                "createOrEditLabel": "Create or edit a Manual"
+            },
+            "created": "A new Manual is created with identifier {{ param }}",
+            "updated": "A Manual is updated with identifier {{ param }}",
+            "deleted": "A Manual is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Manual {{ id }}?"
+            },
+            "detail": {
+                "title": "Manual"
+            },
+            "name": "Name",
+            "code": "Code",
+            "enabled": "Enabled",
+            "link": "Link",
+            "description": "Description",
+            "trackChangesEnabled": "Track Changes Enabled",
+            "retired": "Retired",
+            "retiredDate": "Retired Date",
+            "retiredNote": "Retired Note",
+            "lock": "Lock",
+            "defaultTemplate": "Default Template",
+            "sections": "Sections",
+            "log": "Log",
+            "templates": "Templates",
+            "manualType": "Manual Type",
+            "organization": "Organization"
+        }
+    }
+}

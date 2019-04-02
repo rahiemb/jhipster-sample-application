@@ -1,0 +1,22 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "manualType": {
+            "home": {
+                "title": "Manual Types",
+                "createLabel": "Create a new Manual Type",
+                "createOrEditLabel": "Create or edit a Manual Type"
+            },
+            "created": "A new Manual Type is created with identifier {{ param }}",
+            "updated": "A Manual Type is updated with identifier {{ param }}",
+            "deleted": "A Manual Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Manual Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Manual Type"
+            },
+            "value": "Value",
+            "enabled": "Enabled"
+        }
+    }
+}

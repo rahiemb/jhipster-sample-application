@@ -1,0 +1,38 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "organization": {
+            "home": {
+                "title": "Organizations",
+                "createLabel": "Create a new Organization",
+                "createOrEditLabel": "Create or edit a Organization"
+            },
+            "created": "A new Organization is created with identifier {{ param }}",
+            "updated": "A Organization is updated with identifier {{ param }}",
+            "deleted": "A Organization is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Organization {{ id }}?"
+            },
+            "detail": {
+                "title": "Organization"
+            },
+            "name": "Name",
+            "enabled": "Enabled",
+            "orderId": "Order Id",
+            "siteUrl": "Site Url",
+            "repository": "Repository",
+            "thumbnail": "Thumbnail",
+            "sorlCore": "Sorl Core",
+            "approvalDateEnabled": "Approval Date Enabled",
+            "effectiveDateEnabled": "Effective Date Enabled",
+            "originalDateEnabled": "Original Date Enabled",
+            "reviewDateEnabled": "Review Date Enabled",
+            "revisionDateEnabled": "Revision Date Enabled",
+            "supersedesDateEnabled": "Supersedes Date Enabled",
+            "manuals": "Manuals",
+            "log": "Log",
+            "reports": "Reports",
+            "groups": "Groups",
+            "roles": "Roles"
+        }
+    }
+}

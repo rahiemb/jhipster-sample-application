@@ -1,0 +1,83 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="comment">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.comment.detail.title">Comment</span> {{comment.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.comment.text">Text</span></dt>
+                <dd>
+                    <span>{{comment.text}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.comment.context">Context</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterSampleApplicationApp.CommentContext.' + comment.context}}">{{comment.context}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.comment.user">User</span></dt>
+                <dd>
+                    <span>{{comment.user}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.comment.timestamp">Timestamp</span></dt>
+                <dd>
+                    <span>{{comment.timestamp}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.comment.replyTo">Reply To</span></dt>
+                <dd>
+                    <span>{{comment.replyTo}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.comment.itemId">Item Id</span></dt>
+                <dd>
+                    <span>{{comment.itemId}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.comment.replyTo">Reply To</span></dt>
+                <dd>
+                    <div *ngIf="comment.replyTo">
+                        <a [routerLink]="['/comment', comment.replyTo?.id, 'view']">{{comment.replyTo?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.comment.user">User</span></dt>
+                <dd>
+                    <div *ngIf="comment.user">
+                        <a [routerLink]="['/users', comment.user?.id, 'view']">{{comment.user?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.comment.comment">Comment</span></dt>
+                <dd>
+                    <div *ngIf="comment.comment">
+                        <a [routerLink]="['/comment', comment.comment?.id, 'view']">{{comment.comment?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.comment.document">Document</span></dt>
+                <dd>
+                    <div *ngIf="comment.document">
+                        <a [routerLink]="['/document', comment.document?.id, 'view']">{{comment.document?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.comment.step">Step</span></dt>
+                <dd>
+                    <div *ngIf="comment.step">
+                        <a [routerLink]="['/step', comment.step?.id, 'view']">{{comment.step?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.comment.users">Users</span></dt>
+                <dd>
+                    <div *ngIf="comment.users">
+                        <a [routerLink]="['/users', comment.users?.id, 'view']">{{comment.users?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/comment', comment.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

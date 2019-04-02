@@ -1,0 +1,100 @@
+{
+    "name": "Manual",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enabled",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "link",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "trackChangesEnabled",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "retired",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "retiredDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "retiredNote",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "lock",
+            "otherEntityRelationshipName": "manual",
+            "relationshipName": "lock",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "documentTemplate",
+            "otherEntityRelationshipName": "manual",
+            "relationshipName": "defaultTemplate",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "section",
+            "otherEntityRelationshipName": "manual",
+            "relationshipName": "sections"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "logEntry",
+            "otherEntityRelationshipName": "manual",
+            "relationshipName": "log"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "documentTemplate",
+            "otherEntityRelationshipName": "manual",
+            "relationshipName": "templates"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "manualType",
+            "otherEntityRelationshipName": "manual",
+            "relationshipName": "manualType",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipName": "organization",
+            "otherEntityName": "organization",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190402214105",
+    "entityTableName": "manual",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,12 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "GroupType": {
+            "null": "",
+            "ALL": "ALL",
+            "PERMISSIONS": "PERMISSIONS",
+            "SPONSORS": "SPONSORS",
+            "DEVELOPERS": "DEVELOPERS",
+            "SIMPLE": "SIMPLE"
+        }
+    }
+}

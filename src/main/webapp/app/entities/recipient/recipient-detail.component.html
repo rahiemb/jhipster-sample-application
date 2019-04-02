@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="recipient">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.recipient.detail.title">Recipient</span> {{recipient.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.recipient.notification">Notification</span></dt>
+                <dd>
+                    <span>{{recipient.notification}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.recipient.user">User</span></dt>
+                <dd>
+                    <span>{{recipient.user}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.recipient.sent">Sent</span></dt>
+                <dd>
+                    <span>{{recipient.sent}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.recipient.timestamp">Timestamp</span></dt>
+                <dd>
+                    <span>{{recipient.timestamp}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.recipient.notification">Notification</span></dt>
+                <dd>
+                    <div *ngIf="recipient.notification">
+                        <a [routerLink]="['/notification', recipient.notification?.id, 'view']">{{recipient.notification?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.recipient.user">User</span></dt>
+                <dd>
+                    <div *ngIf="recipient.user">
+                        <a [routerLink]="['/users', recipient.user?.id, 'view']">{{recipient.user?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/recipient', recipient.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

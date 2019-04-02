@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="logEntry">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.logEntry.detail.title">Log Entry</span> {{logEntry.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.logEntry.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterSampleApplicationApp.ObjectType.' + logEntry.type}}">{{logEntry.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.logEntry.level">Level</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterSampleApplicationApp.LogLevel.' + logEntry.level}}">{{logEntry.level}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.logEntry.objectId">Object Id</span></dt>
+                <dd>
+                    <span>{{logEntry.objectId}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.logEntry.details">Details</span></dt>
+                <dd>
+                    <span>{{logEntry.details}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.logEntry.user">User</span></dt>
+                <dd>
+                    <span>{{logEntry.user}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.logEntry.timestamp">Timestamp</span></dt>
+                <dd>
+                    <span>{{logEntry.timestamp}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.logEntry.document">Document</span></dt>
+                <dd>
+                    <div *ngIf="logEntry.document">
+                        <a [routerLink]="['/document', logEntry.document?.id, 'view']">{{logEntry.document?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.logEntry.manual">Manual</span></dt>
+                <dd>
+                    <div *ngIf="logEntry.manual">
+                        <a [routerLink]="['/manual', logEntry.manual?.id, 'view']">{{logEntry.manual?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.logEntry.organization">Organization</span></dt>
+                <dd>
+                    <div *ngIf="logEntry.organization">
+                        <a [routerLink]="['/organization', logEntry.organization?.id, 'view']">{{logEntry.organization?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.logEntry.section">Section</span></dt>
+                <dd>
+                    <div *ngIf="logEntry.section">
+                        <a [routerLink]="['/section', logEntry.section?.id, 'view']">{{logEntry.section?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/log-entry', logEntry.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

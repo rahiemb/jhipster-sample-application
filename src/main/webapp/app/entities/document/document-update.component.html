@@ -1,0 +1,225 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-document-heading" jhiTranslate="jhipsterSampleApplicationApp.document.home.createOrEditLabel">Create or edit a Document</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!document.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="document.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="document.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.code" for="field_code">Code</label>
+                    <input type="text" class="form-control" name="code" id="field_code"
+                        [(ngModel)]="document.code" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.seed" for="field_seed">Seed</label>
+                    <input type="number" class="form-control" name="seed" id="field_seed"
+                        [(ngModel)]="document.seed" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                        [(ngModel)]="document.description" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.enabled" for="field_enabled">Enabled</label>
+                    <input type="checkbox" class="form-control" name="enabled" id="field_enabled"
+                        [(ngModel)]="document.enabled" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.link" for="field_link">Link</label>
+                    <input type="text" class="form-control" name="link" id="field_link"
+                        [(ngModel)]="document.link" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.orderId" for="field_orderId">Order Id</label>
+                    <input type="number" class="form-control" name="orderId" id="field_orderId"
+                        [(ngModel)]="document.orderId" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.effectiveDate" for="field_effectiveDate">Effective Date</label>
+                    <div class="input-group">
+                        <input id="field_effectiveDate" type="text" class="form-control" name="effectiveDate" ngbDatepicker  #effectiveDateDp="ngbDatepicker" [(ngModel)]="document.effectiveDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="effectiveDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.approvalDate" for="field_approvalDate">Approval Date</label>
+                    <div class="input-group">
+                        <input id="field_approvalDate" type="text" class="form-control" name="approvalDate" ngbDatepicker  #approvalDateDp="ngbDatepicker" [(ngModel)]="document.approvalDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="approvalDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.supersedesDate" for="field_supersedesDate">Supersedes Date</label>
+                    <div class="input-group">
+                        <input id="field_supersedesDate" type="text" class="form-control" name="supersedesDate" ngbDatepicker  #supersedesDateDp="ngbDatepicker" [(ngModel)]="document.supersedesDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="supersedesDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.originalDate" for="field_originalDate">Original Date</label>
+                    <div class="input-group">
+                        <input id="field_originalDate" type="text" class="form-control" name="originalDate" ngbDatepicker  #originalDateDp="ngbDatepicker" [(ngModel)]="document.originalDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="originalDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.reviewDate" for="field_reviewDate">Review Date</label>
+                    <div class="input-group">
+                        <input id="field_reviewDate" type="text" class="form-control" name="reviewDate" ngbDatepicker  #reviewDateDp="ngbDatepicker" [(ngModel)]="document.reviewDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="reviewDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.revisionDate" for="field_revisionDate">Revision Date</label>
+                    <div class="input-group">
+                        <input id="field_revisionDate" type="text" class="form-control" name="revisionDate" ngbDatepicker  #revisionDateDp="ngbDatepicker" [(ngModel)]="document.revisionDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="revisionDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.expirationType" for="field_expirationType">Expiration Type</label>
+                    <select class="form-control" name="expirationType" [(ngModel)]="document.expirationType" id="field_expirationType" >
+                        <option value="DATE">{{'jhipsterSampleApplicationApp.ExpirationType.DATE' | translate}}</option>
+                        <option value="INTERVAL">{{'jhipsterSampleApplicationApp.ExpirationType.INTERVAL' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.expirationDate" for="field_expirationDate">Expiration Date</label>
+                    <div class="input-group">
+                        <input id="field_expirationDate" type="text" class="form-control" name="expirationDate" ngbDatepicker  #expirationDateDp="ngbDatepicker" [(ngModel)]="document.expirationDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="expirationDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.expirationPeriod" for="field_expirationPeriod">Expiration Period</label>
+                    <input type="number" class="form-control" name="expirationPeriod" id="field_expirationPeriod"
+                        [(ngModel)]="document.expirationPeriod" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.expirationInterval" for="field_expirationInterval">Expiration Interval</label>
+                    <select class="form-control" name="expirationInterval" [(ngModel)]="document.expirationInterval" id="field_expirationInterval" >
+                        <option value="DAYS">{{'jhipsterSampleApplicationApp.TimeInterval.DAYS' | translate}}</option>
+                        <option value="WEEKS">{{'jhipsterSampleApplicationApp.TimeInterval.WEEKS' | translate}}</option>
+                        <option value="MONTHS">{{'jhipsterSampleApplicationApp.TimeInterval.MONTHS' | translate}}</option>
+                        <option value="YEARS">{{'jhipsterSampleApplicationApp.TimeInterval.YEARS' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.expirationBase" for="field_expirationBase">Expiration Base</label>
+                    <select class="form-control" name="expirationBase" [(ngModel)]="document.expirationBase" id="field_expirationBase" >
+                        <option value="EFFECTIVEDATE">{{'jhipsterSampleApplicationApp.ExpirationBase.EFFECTIVEDATE' | translate}}</option>
+                        <option value="APPROVALDATE">{{'jhipsterSampleApplicationApp.ExpirationBase.APPROVALDATE' | translate}}</option>
+                        <option value="SUPERSEDESDATE">{{'jhipsterSampleApplicationApp.ExpirationBase.SUPERSEDESDATE' | translate}}</option>
+                        <option value="ORIGINALDATE">{{'jhipsterSampleApplicationApp.ExpirationBase.ORIGINALDATE' | translate}}</option>
+                        <option value="REVISIONDATE">{{'jhipsterSampleApplicationApp.ExpirationBase.REVISIONDATE' | translate}}</option>
+                        <option value="REVIEWDATE">{{'jhipsterSampleApplicationApp.ExpirationBase.REVIEWDATE' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.tableOfContents" for="field_tableOfContents">Table Of Contents</label>
+                    <input type="checkbox" class="form-control" name="tableOfContents" id="field_tableOfContents"
+                        [(ngModel)]="document.tableOfContents" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.retired" for="field_retired">Retired</label>
+                    <input type="checkbox" class="form-control" name="retired" id="field_retired"
+                        [(ngModel)]="document.retired" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.retiredDate" for="field_retiredDate">Retired Date</label>
+                    <div class="input-group">
+                        <input id="field_retiredDate" type="text" class="form-control" name="retiredDate" ngbDatepicker  #retiredDateDp="ngbDatepicker" [(ngModel)]="document.retiredDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="retiredDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.retiredNote" for="field_retiredNote">Retired Note</label>
+                    <input type="text" class="form-control" name="retiredNote" id="field_retiredNote"
+                        [(ngModel)]="document.retiredNote" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.lock" for="field_lock">Lock</label>
+                    <select class="form-control" id="field_lock" name="lock" [(ngModel)]="document.lock">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="lockOption.id === document.lock?.id ? document.lock : lockOption" *ngFor="let lockOption of locks; trackBy: trackLockById">{{lockOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.workflow" for="field_workflow">Workflow</label>
+                    <select class="form-control" id="field_workflow" name="workflow" [(ngModel)]="document.workflow">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="workflowOption.id === document.workflow?.id ? document.workflow : workflowOption" *ngFor="let workflowOption of workflows; trackBy: trackWorkflowById">{{workflowOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="jhipsterSampleApplicationApp.document.keywords" for="field_keywords">Keywords</label>
+                    <select class="form-control" id="field_keywords" multiple name="keywords" [(ngModel)]="document.keywords">
+                        <option [ngValue]="getSelected(document.keywords, keywordOption)" *ngFor="let keywordOption of keywords; trackBy: trackKeywordById">{{keywordOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="jhipsterSampleApplicationApp.document.categories" for="field_categories">Categories</label>
+                    <select class="form-control" id="field_categories" multiple name="categories" [(ngModel)]="document.categories">
+                        <option [ngValue]="getSelected(document.categories, categoryOption)" *ngFor="let categoryOption of categories; trackBy: trackCategoryById">{{categoryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="jhipsterSampleApplicationApp.document.participants" for="field_participants">Participants</label>
+                    <select class="form-control" id="field_participants" multiple name="participants" [(ngModel)]="document.participants">
+                        <option [ngValue]="getSelected(document.participants, participantOption)" *ngFor="let participantOption of participants; trackBy: trackParticipantById">{{participantOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.document.section" for="field_section">Section</label>
+                    <select class="form-control" id="field_section" name="section" [(ngModel)]="document.section" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="sectionOption.id === document.section?.id ? document.section : sectionOption" *ngFor="let sectionOption of sections; trackBy: trackSectionById">{{sectionOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

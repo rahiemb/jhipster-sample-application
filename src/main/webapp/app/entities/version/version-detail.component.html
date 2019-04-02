@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="version">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.version.detail.title">Version</span> {{version.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.version.versionMajor">Version Major</span></dt>
+                <dd>
+                    <span>{{version.versionMajor}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.version.versionMinor">Version Minor</span></dt>
+                <dd>
+                    <span>{{version.versionMinor}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.version.versionDraft">Version Draft</span></dt>
+                <dd>
+                    <span>{{version.versionDraft}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.version.published">Published</span></dt>
+                <dd>
+                    <span>{{version.published}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.version.document">Document</span></dt>
+                <dd>
+                    <div *ngIf="version.document">
+                        <a [routerLink]="['/document', version.document?.id, 'view']">{{version.document?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.version.summary">Summary</span></dt>
+                <dd>
+                    <div *ngIf="version.summary">
+                        <a [routerLink]="['/version-summary', version.summary?.id, 'view']">{{version.summary?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/version', version.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

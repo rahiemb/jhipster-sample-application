@@ -1,0 +1,86 @@
+{
+    "name": "Section",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "seed",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "mask",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enabled",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "link",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "orderId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "retired",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "retiredDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "retiredNote",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "manual",
+            "otherEntityName": "manual",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "lock",
+            "otherEntityRelationshipName": "section",
+            "relationshipName": "lock",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "document",
+            "otherEntityRelationshipName": "section",
+            "relationshipName": "documents"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "logEntry",
+            "otherEntityRelationshipName": "section",
+            "relationshipName": "log"
+        }
+    ],
+    "changelogDate": "20190402214114",
+    "entityTableName": "section",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

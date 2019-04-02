@@ -1,0 +1,100 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-log-entry-heading" jhiTranslate="jhipsterSampleApplicationApp.logEntry.home.createOrEditLabel">Create or edit a Log Entry</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!logEntry.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="logEntry.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.logEntry.type" for="field_type">Type</label>
+                    <select class="form-control" name="type" [(ngModel)]="logEntry.type" id="field_type" >
+                        <option value="CATEGORY">{{'jhipsterSampleApplicationApp.ObjectType.CATEGORY' | translate}}</option>
+                        <option value="DOCUMENT">{{'jhipsterSampleApplicationApp.ObjectType.DOCUMENT' | translate}}</option>
+                        <option value="MANUAL">{{'jhipsterSampleApplicationApp.ObjectType.MANUAL' | translate}}</option>
+                        <option value="NOTIFICATION">{{'jhipsterSampleApplicationApp.ObjectType.NOTIFICATION' | translate}}</option>
+                        <option value="ORGANIZATION">{{'jhipsterSampleApplicationApp.ObjectType.ORGANIZATION' | translate}}</option>
+                        <option value="REPORT">{{'jhipsterSampleApplicationApp.ObjectType.REPORT' | translate}}</option>
+                        <option value="SECTION">{{'jhipsterSampleApplicationApp.ObjectType.SECTION' | translate}}</option>
+                        <option value="SECURITY">{{'jhipsterSampleApplicationApp.ObjectType.SECURITY' | translate}}</option>
+                        <option value="SYSTEM">{{'jhipsterSampleApplicationApp.ObjectType.SYSTEM' | translate}}</option>
+                        <option value="USER">{{'jhipsterSampleApplicationApp.ObjectType.USER' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.logEntry.level" for="field_level">Level</label>
+                    <select class="form-control" name="level" [(ngModel)]="logEntry.level" id="field_level" >
+                        <option value="INFO">{{'jhipsterSampleApplicationApp.LogLevel.INFO' | translate}}</option>
+                        <option value="WARNING">{{'jhipsterSampleApplicationApp.LogLevel.WARNING' | translate}}</option>
+                        <option value="ERROR">{{'jhipsterSampleApplicationApp.LogLevel.ERROR' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.logEntry.objectId" for="field_objectId">Object Id</label>
+                    <input type="number" class="form-control" name="objectId" id="field_objectId"
+                        [(ngModel)]="logEntry.objectId" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.logEntry.details" for="field_details">Details</label>
+                    <input type="text" class="form-control" name="details" id="field_details"
+                        [(ngModel)]="logEntry.details" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.logEntry.user" for="field_user">User</label>
+                    <input type="text" class="form-control" name="user" id="field_user"
+                        [(ngModel)]="logEntry.user" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.logEntry.timestamp" for="field_timestamp">Timestamp</label>
+                    <div class="input-group">
+                        <input id="field_timestamp" type="text" class="form-control" name="timestamp" ngbDatepicker  #timestampDp="ngbDatepicker" [(ngModel)]="logEntry.timestamp"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="timestampDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.logEntry.document" for="field_document">Document</label>
+                    <select class="form-control" id="field_document" name="document" [(ngModel)]="logEntry.document" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="documentOption.id === logEntry.document?.id ? logEntry.document : documentOption" *ngFor="let documentOption of documents; trackBy: trackDocumentById">{{documentOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.logEntry.manual" for="field_manual">Manual</label>
+                    <select class="form-control" id="field_manual" name="manual" [(ngModel)]="logEntry.manual" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="manualOption.id === logEntry.manual?.id ? logEntry.manual : manualOption" *ngFor="let manualOption of manuals; trackBy: trackManualById">{{manualOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.logEntry.organization" for="field_organization">Organization</label>
+                    <select class="form-control" id="field_organization" name="organization" [(ngModel)]="logEntry.organization" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="organizationOption.id === logEntry.organization?.id ? logEntry.organization : organizationOption" *ngFor="let organizationOption of organizations; trackBy: trackOrganizationById">{{organizationOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.logEntry.section" for="field_section">Section</label>
+                    <select class="form-control" id="field_section" name="section" [(ngModel)]="logEntry.section" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="sectionOption.id === logEntry.section?.id ? logEntry.section : sectionOption" *ngFor="let sectionOption of sections; trackBy: trackSectionById">{{sectionOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+{
+    "name": "Recipient",
+    "fields": [
+        {
+            "fieldName": "notification",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "user",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sent",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "timestamp",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "notification",
+            "otherEntityName": "notification",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "users",
+            "otherEntityRelationshipName": "recipient",
+            "relationshipName": "user",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190402214111",
+    "entityTableName": "recipient",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

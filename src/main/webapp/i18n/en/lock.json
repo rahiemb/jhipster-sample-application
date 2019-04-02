@@ -1,0 +1,23 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "lock": {
+            "home": {
+                "title": "Locks",
+                "createLabel": "Create a new Lock",
+                "createOrEditLabel": "Create or edit a Lock"
+            },
+            "created": "A new Lock is created with identifier {{ param }}",
+            "updated": "A Lock is updated with identifier {{ param }}",
+            "deleted": "A Lock is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Lock {{ id }}?"
+            },
+            "detail": {
+                "title": "Lock"
+            },
+            "objectId": "Object Id",
+            "lockType": "Lock Type",
+            "objectType": "Object Type"
+        }
+    }
+}

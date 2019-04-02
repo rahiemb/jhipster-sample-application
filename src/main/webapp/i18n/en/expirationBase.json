@@ -1,0 +1,13 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "ExpirationBase": {
+            "null": "",
+            "EFFECTIVEDATE": "EFFECTIVEDATE",
+            "APPROVALDATE": "APPROVALDATE",
+            "SUPERSEDESDATE": "SUPERSEDESDATE",
+            "ORIGINALDATE": "ORIGINALDATE",
+            "REVISIONDATE": "REVISIONDATE",
+            "REVIEWDATE": "REVIEWDATE"
+        }
+    }
+}

@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-document-template-heading" jhiTranslate="jhipsterSampleApplicationApp.documentTemplate.home.createOrEditLabel">Create or edit a Document Template</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!documentTemplate.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="documentTemplate.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.documentTemplate.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="documentTemplate.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.documentTemplate.primaryHeader" for="field_primaryHeader">Primary Header</label>
+                    <input type="text" class="form-control" name="primaryHeader" id="field_primaryHeader"
+                        [(ngModel)]="documentTemplate.primaryHeader" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.documentTemplate.primaryFooter" for="field_primaryFooter">Primary Footer</label>
+                    <input type="text" class="form-control" name="primaryFooter" id="field_primaryFooter"
+                        [(ngModel)]="documentTemplate.primaryFooter" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.documentTemplate.appendixHeader" for="field_appendixHeader">Appendix Header</label>
+                    <input type="text" class="form-control" name="appendixHeader" id="field_appendixHeader"
+                        [(ngModel)]="documentTemplate.appendixHeader" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.documentTemplate.appendixFooter" for="field_appendixFooter">Appendix Footer</label>
+                    <input type="text" class="form-control" name="appendixFooter" id="field_appendixFooter"
+                        [(ngModel)]="documentTemplate.appendixFooter" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.documentTemplate.enabled" for="field_enabled">Enabled</label>
+                    <input type="checkbox" class="form-control" name="enabled" id="field_enabled"
+                        [(ngModel)]="documentTemplate.enabled" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.documentTemplate.manual" for="field_manual">Manual</label>
+                    <select class="form-control" id="field_manual" name="manual" [(ngModel)]="documentTemplate.manual" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="manualOption.id === documentTemplate.manual?.id ? documentTemplate.manual : manualOption" *ngFor="let manualOption of manuals; trackBy: trackManualById">{{manualOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

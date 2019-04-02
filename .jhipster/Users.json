@@ -1,0 +1,110 @@
+{
+    "name": "Users",
+    "fields": [
+        {
+            "fieldName": "firstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enabled",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "uid",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "hopkinsId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "deferToProxy",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "users",
+            "otherEntityRelationshipName": "users",
+            "relationshipName": "proxy",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "organization",
+            "otherEntityRelationshipName": "users",
+            "relationshipName": "organization",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "title",
+            "otherEntityRelationshipName": "users",
+            "relationshipName": "titles"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "bookmark",
+            "otherEntityRelationshipName": "users",
+            "relationshipName": "bookmarks"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "comment",
+            "otherEntityRelationshipName": "users",
+            "relationshipName": "comments"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "userGroup",
+            "otherEntityRelationshipName": "users",
+            "relationshipName": "groups",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "userGroup",
+            "otherEntityRelationshipName": "users",
+            "relationshipName": "groups",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "role",
+            "otherEntityRelationshipName": "users",
+            "relationshipName": "roles",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "ability",
+            "otherEntityRelationshipName": "users",
+            "relationshipName": "abilities",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190402214117",
+    "entityTableName": "users",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="notification">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.notification.detail.title">Notification</span> {{notification.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.notification.value">Value</span></dt>
+                <dd>
+                    <span>{{notification.value}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.notification.interval">Interval</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterSampleApplicationApp.TimeInterval.' + notification.interval}}">{{notification.interval}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.notification.beforeDate">Before Date</span></dt>
+                <dd>
+                    <span>{{notification.beforeDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.notification.afterDate">After Date</span></dt>
+                <dd>
+                    <span>{{notification.afterDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.notification.sendDate">Send Date</span></dt>
+                <dd>
+                    <span>{{notification.sendDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.notification.sender">Sender</span></dt>
+                <dd>
+                    <span>{{notification.sender}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.notification.message">Message</span></dt>
+                <dd>
+                    <span>{{notification.message}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.notification.sender">Sender</span></dt>
+                <dd>
+                    <div *ngIf="notification.sender">
+                        <a [routerLink]="['/users', notification.sender?.id, 'view']">{{notification.sender?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.notification.step">Step</span></dt>
+                <dd>
+                    <div *ngIf="notification.step">
+                        <a [routerLink]="['/step', notification.step?.id, 'view']">{{notification.step?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/notification', notification.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

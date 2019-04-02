@@ -1,0 +1,10 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "LogLevel": {
+            "null": "",
+            "INFO": "INFO",
+            "WARNING": "WARNING",
+            "ERROR": "ERROR"
+        }
+    }
+}

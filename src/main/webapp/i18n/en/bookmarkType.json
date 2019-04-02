@@ -1,0 +1,12 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "BookmarkType": {
+            "null": "",
+            "ORGANIZATION": "ORGANIZATION",
+            "MANUAL": "MANUAL",
+            "SECTION": "SECTION",
+            "DOCUMENT": "DOCUMENT",
+            "PART": "PART"
+        }
+    }
+}

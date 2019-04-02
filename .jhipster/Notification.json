@@ -1,0 +1,65 @@
+{
+    "name": "Notification",
+    "fields": [
+        {
+            "fieldName": "value",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "interval",
+            "fieldType": "TimeInterval",
+            "fieldValues": "DAYS,WEEKS,MONTHS,YEARS"
+        },
+        {
+            "fieldName": "beforeDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "afterDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "sendDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "sender",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "message",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "users",
+            "otherEntityRelationshipName": "notification",
+            "relationshipName": "sender",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "recipient",
+            "otherEntityRelationshipName": "notification",
+            "relationshipName": "recipients"
+        },
+        {
+            "relationshipName": "step",
+            "otherEntityName": "step",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190402214107",
+    "entityTableName": "notification",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

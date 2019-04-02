@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Step.
+    -->
+    <changeSet id="20190402214115-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="sender_id"
+                                 baseTableName="step"
+                                 constraintName="fk_step_sender_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="step_id"
+                                 baseTableName="step_users"
+                                 constraintName="fk_step_users_step_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="step"/>
+        <addForeignKeyConstraint baseColumnNames="users_id"
+                                 baseTableName="step_users"
+                                 constraintName="fk_step_users_users_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="users"/>
+        
+        <addForeignKeyConstraint baseColumnNames="workflow_id"
+                                 baseTableName="step"
+                                 constraintName="fk_step_workflow_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="workflow"/>
+
+    </changeSet>
+</databaseChangeLog>

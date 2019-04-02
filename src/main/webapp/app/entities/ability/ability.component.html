@@ -1,0 +1,58 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.ability.home.title">Abilities</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-ability" [routerLink]="['/ability/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jhipsterSampleApplicationApp.ability.home.createLabel">
+            Create new Ability
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="abilities">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.ability.resourceId">Resource Id</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.ability.action">Action</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.ability.scope">Scope</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let ability of abilities ;trackBy: trackId">
+                <td><a [routerLink]="['/ability', ability.id, 'view' ]">{{ability.id}}</a></td>
+                <td>{{ability.resourceId}}</td>
+                <td jhiTranslate="{{'jhipsterSampleApplicationApp.AbilityAction.' + ability.action}}">{{ability.action}}</td>
+                <td jhiTranslate="{{'jhipsterSampleApplicationApp.AbilityScope.' + ability.scope}}">{{ability.scope}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/ability', ability.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/ability', ability.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'ability', { outlets: { popup: ability.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

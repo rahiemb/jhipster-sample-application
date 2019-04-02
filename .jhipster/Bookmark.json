@@ -1,0 +1,27 @@
+{
+    "name": "Bookmark",
+    "fields": [
+        {
+            "fieldName": "type",
+            "fieldType": "BookmarkType",
+            "fieldValues": "ORGANIZATION,MANUAL,SECTION,DOCUMENT,PART"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "users",
+            "otherEntityName": "users",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190402214054",
+    "entityTableName": "bookmark",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

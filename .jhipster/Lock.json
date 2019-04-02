@@ -1,0 +1,29 @@
+{
+    "name": "Lock",
+    "fields": [
+        {
+            "fieldName": "objectId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "lockType",
+            "fieldType": "LockType",
+            "fieldValues": "CHECKOUT,LOCK"
+        },
+        {
+            "fieldName": "objectType",
+            "fieldType": "ObjectType",
+            "fieldValues": "CATEGORY,DOCUMENT,MANUAL,NOTIFICATION,ORGANIZATION,REPORT,SECTION,SECURITY,SYSTEM,USER"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190402214103",
+    "entityTableName": "lock",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

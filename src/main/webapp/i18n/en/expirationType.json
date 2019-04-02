@@ -1,0 +1,9 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "ExpirationType": {
+            "null": "",
+            "DATE": "DATE",
+            "INTERVAL": "INTERVAL"
+        }
+    }
+}

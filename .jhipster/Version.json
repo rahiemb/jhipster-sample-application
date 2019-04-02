@@ -1,0 +1,58 @@
+{
+    "name": "Version",
+    "fields": [
+        {
+            "fieldName": "versionMajor",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "versionMinor",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "versionDraft",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "published",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "document",
+            "otherEntityName": "document",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "versionSummary",
+            "otherEntityRelationshipName": "version",
+            "relationshipName": "summary",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "part",
+            "otherEntityRelationshipName": "version",
+            "relationshipName": "parts"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "workflow",
+            "otherEntityRelationshipName": "version",
+            "relationshipName": "workflow"
+        }
+    ],
+    "changelogDate": "20190402214118",
+    "entityTableName": "version",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

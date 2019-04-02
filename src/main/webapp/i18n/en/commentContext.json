@@ -1,0 +1,13 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "CommentContext": {
+            "null": "",
+            "APPENDIX": "APPENDIX",
+            "ACKNOWLEDGEMENT": "ACKNOWLEDGEMENT",
+            "DOCUMENT": "DOCUMENT",
+            "REVIEW": "REVIEW",
+            "SECTION": "SECTION",
+            "SIGNATURE": "SIGNATURE"
+        }
+    }
+}

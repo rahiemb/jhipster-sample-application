@@ -1,0 +1,132 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.document.home.title">Documents</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-document" [routerLink]="['/document/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jhipsterSampleApplicationApp.document.home.createLabel">
+            Create new Document
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="documents">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.name">Name</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.code">Code</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.seed">Seed</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.description">Description</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.enabled">Enabled</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.link">Link</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.orderId">Order Id</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.effectiveDate">Effective Date</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.approvalDate">Approval Date</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.supersedesDate">Supersedes Date</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.originalDate">Original Date</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.reviewDate">Review Date</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.revisionDate">Revision Date</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.expirationType">Expiration Type</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.expirationDate">Expiration Date</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.expirationPeriod">Expiration Period</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.expirationInterval">Expiration Interval</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.expirationBase">Expiration Base</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.tableOfContents">Table Of Contents</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.retired">Retired</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.retiredDate">Retired Date</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.retiredNote">Retired Note</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.lock">Lock</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.workflow">Workflow</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.keywords">Keywords</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.categories">Categories</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.participants">Participants</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.document.section">Section</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let document of documents ;trackBy: trackId">
+                <td><a [routerLink]="['/document', document.id, 'view' ]">{{document.id}}</a></td>
+                <td>{{document.name}}</td>
+                <td>{{document.code}}</td>
+                <td>{{document.seed}}</td>
+                <td>{{document.description}}</td>
+                <td>{{document.enabled}}</td>
+                <td>{{document.link}}</td>
+                <td>{{document.orderId}}</td>
+                <td>{{document.effectiveDate | date:'mediumDate'}}</td>
+                <td>{{document.approvalDate | date:'mediumDate'}}</td>
+                <td>{{document.supersedesDate | date:'mediumDate'}}</td>
+                <td>{{document.originalDate | date:'mediumDate'}}</td>
+                <td>{{document.reviewDate | date:'mediumDate'}}</td>
+                <td>{{document.revisionDate | date:'mediumDate'}}</td>
+                <td jhiTranslate="{{'jhipsterSampleApplicationApp.ExpirationType.' + document.expirationType}}">{{document.expirationType}}</td>
+                <td>{{document.expirationDate | date:'mediumDate'}}</td>
+                <td>{{document.expirationPeriod}}</td>
+                <td jhiTranslate="{{'jhipsterSampleApplicationApp.TimeInterval.' + document.expirationInterval}}">{{document.expirationInterval}}</td>
+                <td jhiTranslate="{{'jhipsterSampleApplicationApp.ExpirationBase.' + document.expirationBase}}">{{document.expirationBase}}</td>
+                <td>{{document.tableOfContents}}</td>
+                <td>{{document.retired}}</td>
+                <td>{{document.retiredDate | date:'mediumDate'}}</td>
+                <td>{{document.retiredNote}}</td>
+                <td>
+                    <div *ngIf="document.lock">
+                        <a [routerLink]="['../lock', document.lock?.id, 'view' ]" >{{document.lock?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="document.workflow">
+                        <a [routerLink]="['../workflow', document.workflow?.id, 'view' ]" >{{document.workflow?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <span *ngFor="let keywords of document.keywords; let last = last">
+                            <a class="form-control-static" [routerLink]="['../keyword', keywords?.id, 'view' ]">{{keywords.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <span *ngFor="let categories of document.categories; let last = last">
+                            <a class="form-control-static" [routerLink]="['../category', categories?.id, 'view' ]">{{categories.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <span *ngFor="let participants of document.participants; let last = last">
+                            <a class="form-control-static" [routerLink]="['../participant', participants?.id, 'view' ]">{{participants.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <div *ngIf="document.section">
+                        <a [routerLink]="['../section', document.section?.id, 'view' ]" >{{document.section?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/document', document.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/document', document.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'document', { outlets: { popup: document.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

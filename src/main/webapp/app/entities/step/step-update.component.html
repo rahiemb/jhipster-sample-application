@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-step-heading" jhiTranslate="jhipsterSampleApplicationApp.step.home.createOrEditLabel">Create or edit a Step</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!step.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="step.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.step.manager" for="field_manager">Manager</label>
+                    <input type="text" class="form-control" name="manager" id="field_manager"
+                        [(ngModel)]="step.manager" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.step.workflow" for="field_workflow">Workflow</label>
+                    <input type="text" class="form-control" name="workflow" id="field_workflow"
+                        [(ngModel)]="step.workflow" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.step.type" for="field_type">Type</label>
+                    <select class="form-control" name="type" [(ngModel)]="step.type" id="field_type" >
+                        <option value="ACKNOWLEDGEMENT">{{'jhipsterSampleApplicationApp.StepType.ACKNOWLEDGEMENT' | translate}}</option>
+                        <option value="DRAFT">{{'jhipsterSampleApplicationApp.StepType.DRAFT' | translate}}</option>
+                        <option value="LOCK">{{'jhipsterSampleApplicationApp.StepType.LOCK' | translate}}</option>
+                        <option value="REVIEW">{{'jhipsterSampleApplicationApp.StepType.REVIEW' | translate}}</option>
+                        <option value="PUBLISH">{{'jhipsterSampleApplicationApp.StepType.PUBLISH' | translate}}</option>
+                        <option value="RETIRE">{{'jhipsterSampleApplicationApp.StepType.RETIRE' | translate}}</option>
+                        <option value="SIGNATURE">{{'jhipsterSampleApplicationApp.StepType.SIGNATURE' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.step.attachments" for="field_attachments">Attachments</label>
+                    <input type="text" class="form-control" name="attachments" id="field_attachments"
+                        [(ngModel)]="step.attachments" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.step.sender" for="field_sender">Sender</label>
+                    <select class="form-control" id="field_sender" name="sender" [(ngModel)]="step.sender" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === step.sender?.id ? step.sender : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="jhipsterSampleApplicationApp.step.users" for="field_users">Users</label>
+                    <select class="form-control" id="field_users" multiple name="users" [(ngModel)]="step.users">
+                        <option [ngValue]="getSelected(step.users, usersOption)" *ngFor="let usersOption of users; trackBy: trackUsersById">{{usersOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.step.workflow" for="field_workflow">Workflow</label>
+                    <select class="form-control" id="field_workflow" name="workflow" [(ngModel)]="step.workflow" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="workflowOption.id === step.workflow?.id ? step.workflow : workflowOption" *ngFor="let workflowOption of workflows; trackBy: trackWorkflowById">{{workflowOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

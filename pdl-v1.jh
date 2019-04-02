@@ -1,0 +1,401 @@
+entity Ability {
+	id Long,
+    resourceId Long,
+    action AbilityAction,
+    scope AbilityScope
+}
+
+entity Action {
+	id String,
+    step String,
+    recipient String,
+    notified Boolean,
+    originationTimestamp ZonedDateTime,
+    responseTimestamp ZonedDateTime
+}
+
+entity Attachment {
+	id String,
+    link String,
+  	step String
+}
+
+entity Bookmark {
+	id Long,
+	type BookmarkType
+}
+
+entity Category {
+	id Long,
+	value String,
+    enabled Boolean
+}
+
+entity Comment {
+	id String,
+    text String,
+    context CommentContext,
+    user String,
+    timestamp ZonedDateTime,
+    replyTo String,
+    itemId String
+}
+
+entity Document {
+	id Long,
+	name String,
+    code String,
+    seed Integer,
+    description String,
+    enabled Boolean,
+    link String,
+    orderId Integer,
+    effectiveDate LocalDate,
+    approvalDate LocalDate,
+    supersedesDate LocalDate,
+    originalDate LocalDate,
+    reviewDate LocalDate,
+    revisionDate LocalDate,
+    expirationType ExpirationType,
+    expirationDate LocalDate,
+    expirationPeriod Integer,
+    expirationInterval TimeInterval,
+    expirationBase ExpirationBase,
+    tableOfContents Boolean,
+    retired Boolean,
+    retiredDate LocalDate,
+    retiredNote String
+}
+
+entity DocumentTemplate {
+	id Long,
+    name String,
+    primaryHeader String,
+    primaryFooter String,
+    appendixHeader String,
+    appendixFooter String,
+    enabled Boolean
+}
+
+entity DocumentTemplatePart {
+	id Long,
+    name String,
+    text String,
+    readOnly Boolean
+}
+
+entity Email {
+	id String,
+    value String
+}
+
+entity UserGroup {
+	id Long,
+    name String,
+    type GroupType,
+    ad Boolean
+}
+
+entity Keyword {
+	id Long,
+	value String,
+    synonyms String
+}
+
+entity Lock {
+	id Long,
+	objectId Long,
+    lockType LockType,
+    objectType ObjectType
+}
+
+entity LogEntry {
+	id Long,
+	type ObjectType,
+    level LogLevel,
+    objectId Long,
+    details String,
+    user String,
+    timestamp LocalDate
+}
+
+entity Manual {
+	id Long,
+	name String,
+    code String,
+    enabled Boolean,
+    link String,
+    description String,
+    trackChangesEnabled Boolean,
+    retired Boolean,
+    retiredDate LocalDate,
+    retiredNote String
+}
+
+entity ManualType {
+	id Long,
+	value String,
+    enabled Boolean
+}
+
+entity Notification {
+	id String,
+    value Integer,
+    interval TimeInterval,
+    beforeDate LocalDate,
+    afterDate LocalDate,
+    sendDate LocalDate,
+    sender String,
+    message String
+}
+
+entity Organization {
+	id Long,
+	name String,
+    enabled Boolean,
+    orderId Integer,
+    siteUrl String,
+    repository String,
+    thumbnail ImageBlob,
+    sorlCore String,
+    approvalDateEnabled Boolean,
+    effectiveDateEnabled Boolean,
+    originalDateEnabled Boolean,
+    reviewDateEnabled Boolean,
+    revisionDateEnabled Boolean,
+    supersedesDateEnabled Boolean
+}
+
+entity Part {
+	id Long,
+	name String,
+    ancestorId Long,
+    enabled Boolean
+}
+
+entity Participant {
+	id Long,
+	value String,
+    enabled Boolean
+}
+
+entity Recipient {
+	id String,
+    notification String,
+    user String,
+    sent Boolean,
+    timestamp LocalDate
+}
+
+entity Report {
+	id Long,
+    name String,
+    description String
+}
+
+entity Role {
+	id Long
+    name String
+}
+
+entity Section {
+	id Long,
+	name String,
+    code String,
+    seed Integer,
+    mask String,
+    description String,
+    enabled Boolean,
+    link String,
+    orderId Integer,
+    retired Boolean,
+    retiredDate LocalDate,
+    retiredNote String
+}
+
+entity Step {
+	id String,
+    manager String,
+    workflow String,
+    type StepType,
+    attachments String
+}
+
+entity Title {
+	id Long,
+	value String,
+    enabled Boolean
+}
+
+entity Users {
+	id Long,
+	firstName String,
+    lastName String,
+    email String,
+    enabled Boolean,
+    uid String,
+    hopkinsId String,
+    deferToProxy Boolean
+}
+
+entity Version {
+	id Long,
+    versionMajor Integer,
+    versionMinor Integer,
+    versionDraft Integer,
+    published Boolean
+}
+
+entity VersionSummary {
+	id String
+    version String
+}
+
+entity Workflow {
+	id String,
+    status WorkflowStatus
+}
+
+enum AbilityScope {
+	ALLOW, DENY
+}
+
+enum AbilityAction {
+	VIEW, EDIT, PUBLISH
+}
+
+enum BookmarkType {
+	ORGANIZATION, MANUAL, SECTION, DOCUMENT, PART
+}
+
+enum ExpirationBase {
+	EFFECTIVEDATE, APPROVALDATE, SUPERSEDESDATE, ORIGINALDATE, REVISIONDATE, REVIEWDATE
+}
+
+enum TimeInterval {
+	DAYS, WEEKS, MONTHS, YEARS
+}
+
+enum ExpirationType {
+	DATE, INTERVAL
+}
+
+enum LockType {
+	CHECKOUT, LOCK
+}
+
+enum LogLevel {
+	INFO, WARNING, ERROR
+}
+
+enum ObjectType {
+	CATEGORY, DOCUMENT, MANUAL, NOTIFICATION, ORGANIZATION, REPORT, SECTION, SECURITY, SYSTEM, USER
+}
+
+enum GroupType {
+	ALL, PERMISSIONS, SPONSORS, DEVELOPERS, SIMPLE
+}
+
+enum CommentContext {
+	APPENDIX, ACKNOWLEDGEMENT, DOCUMENT, REVIEW, SECTION, SIGNATURE
+}
+enum StepType {
+	ACKNOWLEDGEMENT, DRAFT, LOCK, REVIEW, PUBLISH, RETIRE, SIGNATURE
+}
+
+enum WorkflowStatus {
+	IN_PROGRESS, COMPLETED, PAUSED
+}
+
+relationship OneToOne {
+	Users{proxy} to Users,
+    Users{organization} to Organization,
+    
+    Manual{lock} to Lock,
+    Manual{defaultTemplate} to DocumentTemplate,
+    
+    Section{lock} to Lock,
+    
+    Document{lock} to Lock,
+    
+    Comment{replyTo} to Comment,
+        
+    Part{children} to Part,
+    
+    Step{sender} to User,
+    
+    Action{recipient} to User,
+    Action{version} to Version,
+    
+	Document{workflow} to Workflow,
+    
+    Version{summary} to VersionSummary,
+       
+    Comment{user} to Users,
+    
+    Notification{sender} to Users,
+    
+    Recipient{user} to Users
+}
+
+relationship OneToMany {
+	Organization{manuals} to Manual,
+    Organization{log} to LogEntry,
+    Organization{reports} to Report,
+    
+    Manual{sections} to Section,
+    Manual{log} to LogEntry,
+    Manual{templates} to DocumentTemplate,
+    DocumentTemplate{sections} to DocumentTemplatePart,
+    
+    Section{documents} to Document,
+    Section{log} to LogEntry,
+    
+    Document{versions} to Version,
+    Document{log} to LogEntry,
+    Document{comments} to Comment,
+    
+    Version{parts} to Part,
+    Version{workflow} to Workflow,
+    
+    Users{titles} to Title,
+    Users{bookmarks} to Bookmark,
+    Users{comments} to Comment,
+    
+    Workflow{steps} to Step,
+    
+    Step{groups} to UserGroup,
+    Step{attachments} to Attachment,
+    Step{comments} to Comment,
+    Step{emails} to Email,
+    Step{actions} to Action,
+    Step{notifications} to Notification,
+    
+    Notification{recipients} to Recipient,
+    
+    Comment{replies} to Comment
+}
+
+relationship ManyToMany {
+	Manual{manualType} to ManualType,
+    
+    Document{keywords} to Keyword,
+    Document{categories} to Category,
+    Document{participants} to Participant,
+    
+    Users{groups} to UserGroup,
+    
+	Step{users} to Users,
+    
+	Users{groups} to UserGroup{users},
+    Users{roles} to Role{users},
+    Users{abilities} to Ability{users},
+    
+    UserGroup{roles} to Role{groups},
+    UserGroup{abilities} to Ability{groups},
+    
+    Role{abilities} to Ability{roles},
+    
+    Organization{groups} to UserGroup{organizations}
+    Organization{roles} to Role{organizations}
+}

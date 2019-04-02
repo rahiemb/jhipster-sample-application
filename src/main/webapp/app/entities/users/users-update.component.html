@@ -1,0 +1,97 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-users-heading" jhiTranslate="jhipsterSampleApplicationApp.users.home.createOrEditLabel">Create or edit a Users</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!users.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="users.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.users.firstName" for="field_firstName">First Name</label>
+                    <input type="text" class="form-control" name="firstName" id="field_firstName"
+                        [(ngModel)]="users.firstName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.users.lastName" for="field_lastName">Last Name</label>
+                    <input type="text" class="form-control" name="lastName" id="field_lastName"
+                        [(ngModel)]="users.lastName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.users.email" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                        [(ngModel)]="users.email" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.users.enabled" for="field_enabled">Enabled</label>
+                    <input type="checkbox" class="form-control" name="enabled" id="field_enabled"
+                        [(ngModel)]="users.enabled" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.users.uid" for="field_uid">Uid</label>
+                    <input type="text" class="form-control" name="uid" id="field_uid"
+                        [(ngModel)]="users.uid" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.users.hopkinsId" for="field_hopkinsId">Hopkins Id</label>
+                    <input type="text" class="form-control" name="hopkinsId" id="field_hopkinsId"
+                        [(ngModel)]="users.hopkinsId" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.users.deferToProxy" for="field_deferToProxy">Defer To Proxy</label>
+                    <input type="checkbox" class="form-control" name="deferToProxy" id="field_deferToProxy"
+                        [(ngModel)]="users.deferToProxy" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.users.proxy" for="field_proxy">Proxy</label>
+                    <select class="form-control" id="field_proxy" name="proxy" [(ngModel)]="users.proxy">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="usersOption.id === users.proxy?.id ? users.proxy : usersOption" *ngFor="let usersOption of proxies; trackBy: trackUsersById">{{usersOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.users.organization" for="field_organization">Organization</label>
+                    <select class="form-control" id="field_organization" name="organization" [(ngModel)]="users.organization">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="organizationOption.id === users.organization?.id ? users.organization : organizationOption" *ngFor="let organizationOption of organizations; trackBy: trackOrganizationById">{{organizationOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="jhipsterSampleApplicationApp.users.groups" for="field_groups">Groups</label>
+                    <select class="form-control" id="field_groups" multiple name="groups" [(ngModel)]="users.groups">
+                        <option [ngValue]="getSelected(users.groups, userGroupOption)" *ngFor="let userGroupOption of usergroups; trackBy: trackUserGroupById">{{userGroupOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="jhipsterSampleApplicationApp.users.groups" for="field_groups">Groups</label>
+                    <select class="form-control" id="field_groups" multiple name="groups" [(ngModel)]="users.groups">
+                        <option [ngValue]="getSelected(users.groups, userGroupOption)" *ngFor="let userGroupOption of usergroups; trackBy: trackUserGroupById">{{userGroupOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="jhipsterSampleApplicationApp.users.roles" for="field_roles">Roles</label>
+                    <select class="form-control" id="field_roles" multiple name="roles" [(ngModel)]="users.roles">
+                        <option [ngValue]="getSelected(users.roles, roleOption)" *ngFor="let roleOption of roles; trackBy: trackRoleById">{{roleOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="jhipsterSampleApplicationApp.users.abilities" for="field_abilities">Abilities</label>
+                    <select class="form-control" id="field_abilities" multiple name="abilities" [(ngModel)]="users.abilities">
+                        <option [ngValue]="getSelected(users.abilities, abilityOption)" *ngFor="let abilityOption of abilities; trackBy: trackAbilityById">{{abilityOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

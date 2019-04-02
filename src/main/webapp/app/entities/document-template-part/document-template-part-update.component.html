@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-document-template-part-heading" jhiTranslate="jhipsterSampleApplicationApp.documentTemplatePart.home.createOrEditLabel">Create or edit a Document Template Part</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!documentTemplatePart.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="documentTemplatePart.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.documentTemplatePart.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="documentTemplatePart.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.documentTemplatePart.text" for="field_text">Text</label>
+                    <input type="text" class="form-control" name="text" id="field_text"
+                        [(ngModel)]="documentTemplatePart.text" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.documentTemplatePart.readOnly" for="field_readOnly">Read Only</label>
+                    <input type="checkbox" class="form-control" name="readOnly" id="field_readOnly"
+                        [(ngModel)]="documentTemplatePart.readOnly" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.documentTemplatePart.documentTemplate" for="field_documentTemplate">Document Template</label>
+                    <select class="form-control" id="field_documentTemplate" name="documentTemplate" [(ngModel)]="documentTemplatePart.documentTemplate" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="documentTemplateOption.id === documentTemplatePart.documentTemplate?.id ? documentTemplatePart.documentTemplate : documentTemplateOption" *ngFor="let documentTemplateOption of documenttemplates; trackBy: trackDocumentTemplateById">{{documentTemplateOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

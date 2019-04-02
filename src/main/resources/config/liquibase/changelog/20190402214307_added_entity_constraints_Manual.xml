@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Manual.
+    -->
+    <changeSet id="20190402214307-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="lock_id"
+                                 baseTableName="manual"
+                                 constraintName="fk_manual_lock_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="lock"/>
+
+        <addForeignKeyConstraint baseColumnNames="default_template_id"
+                                 baseTableName="manual"
+                                 constraintName="fk_manual_default_template_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="document_template"/>
+
+        <addForeignKeyConstraint baseColumnNames="manual_id"
+                                 baseTableName="manual_manual_type"
+                                 constraintName="fk_manual_manual_type_manual_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="manual"/>
+        <addForeignKeyConstraint baseColumnNames="manual_type_id"
+                                 baseTableName="manual_manual_type"
+                                 constraintName="fk_manual_manual_type_manual_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="manual_type"/>
+        
+        <addForeignKeyConstraint baseColumnNames="organization_id"
+                                 baseTableName="manual"
+                                 constraintName="fk_manual_organization_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="organization"/>
+
+    </changeSet>
+</databaseChangeLog>

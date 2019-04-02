@@ -1,0 +1,102 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.users.home.title">Users</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-users" [routerLink]="['/users/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jhipsterSampleApplicationApp.users.home.createLabel">
+            Create new Users
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="users">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.users.firstName">First Name</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.users.lastName">Last Name</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.users.email">Email</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.users.enabled">Enabled</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.users.uid">Uid</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.users.hopkinsId">Hopkins Id</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.users.deferToProxy">Defer To Proxy</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.users.proxy">Proxy</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.users.organization">Organization</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.users.groups">Groups</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.users.groups">Groups</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.users.roles">Roles</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.users.abilities">Abilities</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let users of users ;trackBy: trackId">
+                <td><a [routerLink]="['/users', users.id, 'view' ]">{{users.id}}</a></td>
+                <td>{{users.firstName}}</td>
+                <td>{{users.lastName}}</td>
+                <td>{{users.email}}</td>
+                <td>{{users.enabled}}</td>
+                <td>{{users.uid}}</td>
+                <td>{{users.hopkinsId}}</td>
+                <td>{{users.deferToProxy}}</td>
+                <td>
+                    <div *ngIf="users.proxy">
+                        <a [routerLink]="['../users', users.proxy?.id, 'view' ]" >{{users.proxy?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="users.organization">
+                        <a [routerLink]="['../organization', users.organization?.id, 'view' ]" >{{users.organization?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <span *ngFor="let groups of users.groups; let last = last">
+                            <a class="form-control-static" [routerLink]="['../user-group', groups?.id, 'view' ]">{{groups.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <span *ngFor="let groups of users.groups; let last = last">
+                            <a class="form-control-static" [routerLink]="['../user-group', groups?.id, 'view' ]">{{groups.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <span *ngFor="let roles of users.roles; let last = last">
+                            <a class="form-control-static" [routerLink]="['../role', roles?.id, 'view' ]">{{roles.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <span *ngFor="let abilities of users.abilities; let last = last">
+                            <a class="form-control-static" [routerLink]="['../ability', abilities?.id, 'view' ]">{{abilities.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/users', users.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/users', users.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'users', { outlets: { popup: users.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

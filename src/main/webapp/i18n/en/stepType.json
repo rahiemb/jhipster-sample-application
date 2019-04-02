@@ -1,0 +1,14 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "StepType": {
+            "null": "",
+            "ACKNOWLEDGEMENT": "ACKNOWLEDGEMENT",
+            "DRAFT": "DRAFT",
+            "LOCK": "LOCK",
+            "REVIEW": "REVIEW",
+            "PUBLISH": "PUBLISH",
+            "RETIRE": "RETIRE",
+            "SIGNATURE": "SIGNATURE"
+        }
+    }
+}

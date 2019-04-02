@@ -1,0 +1,72 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.version.home.title">Versions</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-version" [routerLink]="['/version/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jhipsterSampleApplicationApp.version.home.createLabel">
+            Create new Version
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="versions">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.version.versionMajor">Version Major</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.version.versionMinor">Version Minor</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.version.versionDraft">Version Draft</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.version.published">Published</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.version.document">Document</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.version.summary">Summary</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let version of versions ;trackBy: trackId">
+                <td><a [routerLink]="['/version', version.id, 'view' ]">{{version.id}}</a></td>
+                <td>{{version.versionMajor}}</td>
+                <td>{{version.versionMinor}}</td>
+                <td>{{version.versionDraft}}</td>
+                <td>{{version.published}}</td>
+                <td>
+                    <div *ngIf="version.document">
+                        <a [routerLink]="['../document', version.document?.id, 'view' ]" >{{version.document?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="version.summary">
+                        <a [routerLink]="['../version-summary', version.summary?.id, 'view' ]" >{{version.summary?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/version', version.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/version', version.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'version', { outlets: { popup: version.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

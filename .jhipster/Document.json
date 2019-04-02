@@ -1,0 +1,171 @@
+{
+    "name": "Document",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "seed",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enabled",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "link",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "orderId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "effectiveDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "approvalDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "supersedesDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "originalDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "reviewDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "revisionDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "expirationType",
+            "fieldType": "ExpirationType",
+            "fieldValues": "DATE,INTERVAL"
+        },
+        {
+            "fieldName": "expirationDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "expirationPeriod",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "expirationInterval",
+            "fieldType": "TimeInterval",
+            "fieldValues": "DAYS,WEEKS,MONTHS,YEARS"
+        },
+        {
+            "fieldName": "expirationBase",
+            "fieldType": "ExpirationBase",
+            "fieldValues": "EFFECTIVEDATE,APPROVALDATE,SUPERSEDESDATE,ORIGINALDATE,REVISIONDATE,REVIEWDATE"
+        },
+        {
+            "fieldName": "tableOfContents",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "retired",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "retiredDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "retiredNote",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "lock",
+            "otherEntityRelationshipName": "document",
+            "relationshipName": "lock",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "workflow",
+            "otherEntityRelationshipName": "document",
+            "relationshipName": "workflow",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "version",
+            "otherEntityRelationshipName": "document",
+            "relationshipName": "versions"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "logEntry",
+            "otherEntityRelationshipName": "document",
+            "relationshipName": "log"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "comment",
+            "otherEntityRelationshipName": "document",
+            "relationshipName": "comments"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "keyword",
+            "otherEntityRelationshipName": "document",
+            "relationshipName": "keywords",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "category",
+            "otherEntityRelationshipName": "document",
+            "relationshipName": "categories",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "participant",
+            "otherEntityRelationshipName": "document",
+            "relationshipName": "participants",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipName": "section",
+            "otherEntityName": "section",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190402214259",
+    "entityTableName": "document",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

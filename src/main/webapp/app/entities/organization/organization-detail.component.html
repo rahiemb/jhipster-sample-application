@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="organization">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.organization.detail.title">Organization</span> {{organization.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.organization.name">Name</span></dt>
+                <dd>
+                    <span>{{organization.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.organization.enabled">Enabled</span></dt>
+                <dd>
+                    <span>{{organization.enabled}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.organization.orderId">Order Id</span></dt>
+                <dd>
+                    <span>{{organization.orderId}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.organization.siteUrl">Site Url</span></dt>
+                <dd>
+                    <span>{{organization.siteUrl}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.organization.repository">Repository</span></dt>
+                <dd>
+                    <span>{{organization.repository}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.organization.thumbnail">Thumbnail</span></dt>
+                <dd>
+                    <div *ngIf="organization.thumbnail">
+                        <a (click)="openFile(organization.thumbnailContentType, organization.thumbnail)">
+                            <img [src]="'data:' + organization.thumbnailContentType + ';base64,' + organization.thumbnail" style="max-width: 100%;" alt="organization image"/>
+                        </a>
+                        {{organization.thumbnailContentType}}, {{byteSize(organization.thumbnail)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.organization.sorlCore">Sorl Core</span></dt>
+                <dd>
+                    <span>{{organization.sorlCore}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.organization.approvalDateEnabled">Approval Date Enabled</span></dt>
+                <dd>
+                    <span>{{organization.approvalDateEnabled}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.organization.effectiveDateEnabled">Effective Date Enabled</span></dt>
+                <dd>
+                    <span>{{organization.effectiveDateEnabled}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.organization.originalDateEnabled">Original Date Enabled</span></dt>
+                <dd>
+                    <span>{{organization.originalDateEnabled}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.organization.reviewDateEnabled">Review Date Enabled</span></dt>
+                <dd>
+                    <span>{{organization.reviewDateEnabled}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.organization.revisionDateEnabled">Revision Date Enabled</span></dt>
+                <dd>
+                    <span>{{organization.revisionDateEnabled}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.organization.supersedesDateEnabled">Supersedes Date Enabled</span></dt>
+                <dd>
+                    <span>{{organization.supersedesDateEnabled}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.organization.groups">Groups</span></dt>
+                <dd>
+                    <span *ngFor="let groups of organization.groups; let last = last">
+                        <a [routerLink]="['/user-group', groups?.id, 'view' ]">{{groups.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.organization.roles">Roles</span></dt>
+                <dd>
+                    <span *ngFor="let roles of organization.roles; let last = last">
+                        <a [routerLink]="['/role', roles?.id, 'view' ]">{{roles.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/organization', organization.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

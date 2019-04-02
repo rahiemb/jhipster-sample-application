@@ -1,0 +1,98 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-section-heading" jhiTranslate="jhipsterSampleApplicationApp.section.home.createOrEditLabel">Create or edit a Section</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!section.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="section.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.section.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="section.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.section.code" for="field_code">Code</label>
+                    <input type="text" class="form-control" name="code" id="field_code"
+                        [(ngModel)]="section.code" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.section.seed" for="field_seed">Seed</label>
+                    <input type="number" class="form-control" name="seed" id="field_seed"
+                        [(ngModel)]="section.seed" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.section.mask" for="field_mask">Mask</label>
+                    <input type="text" class="form-control" name="mask" id="field_mask"
+                        [(ngModel)]="section.mask" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.section.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                        [(ngModel)]="section.description" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.section.enabled" for="field_enabled">Enabled</label>
+                    <input type="checkbox" class="form-control" name="enabled" id="field_enabled"
+                        [(ngModel)]="section.enabled" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.section.link" for="field_link">Link</label>
+                    <input type="text" class="form-control" name="link" id="field_link"
+                        [(ngModel)]="section.link" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.section.orderId" for="field_orderId">Order Id</label>
+                    <input type="number" class="form-control" name="orderId" id="field_orderId"
+                        [(ngModel)]="section.orderId" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.section.retired" for="field_retired">Retired</label>
+                    <input type="checkbox" class="form-control" name="retired" id="field_retired"
+                        [(ngModel)]="section.retired" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.section.retiredDate" for="field_retiredDate">Retired Date</label>
+                    <div class="input-group">
+                        <input id="field_retiredDate" type="text" class="form-control" name="retiredDate" ngbDatepicker  #retiredDateDp="ngbDatepicker" [(ngModel)]="section.retiredDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="retiredDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.section.retiredNote" for="field_retiredNote">Retired Note</label>
+                    <input type="text" class="form-control" name="retiredNote" id="field_retiredNote"
+                        [(ngModel)]="section.retiredNote" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.section.manual" for="field_manual">Manual</label>
+                    <select class="form-control" id="field_manual" name="manual" [(ngModel)]="section.manual" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="manualOption.id === section.manual?.id ? section.manual : manualOption" *ngFor="let manualOption of manuals; trackBy: trackManualById">{{manualOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.section.lock" for="field_lock">Lock</label>
+                    <select class="form-control" id="field_lock" name="lock" [(ngModel)]="section.lock">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="lockOption.id === section.lock?.id ? section.lock : lockOption" *ngFor="let lockOption of locks; trackBy: trackLockById">{{lockOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "ability": {
+            "home": {
+                "title": "Abilities",
+                "createLabel": "Create a new Ability",
+                "createOrEditLabel": "Create or edit a Ability"
+            },
+            "created": "A new Ability is created with identifier {{ param }}",
+            "updated": "A Ability is updated with identifier {{ param }}",
+            "deleted": "A Ability is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Ability {{ id }}?"
+            },
+            "detail": {
+                "title": "Ability"
+            },
+            "resourceId": "Resource Id",
+            "action": "Action",
+            "scope": "Scope",
+            "users": "Users",
+            "groups": "Groups",
+            "roles": "Roles"
+        }
+    }
+}

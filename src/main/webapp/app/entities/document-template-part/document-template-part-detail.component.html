@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="documentTemplatePart">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.documentTemplatePart.detail.title">Document Template Part</span> {{documentTemplatePart.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.documentTemplatePart.name">Name</span></dt>
+                <dd>
+                    <span>{{documentTemplatePart.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.documentTemplatePart.text">Text</span></dt>
+                <dd>
+                    <span>{{documentTemplatePart.text}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.documentTemplatePart.readOnly">Read Only</span></dt>
+                <dd>
+                    <span>{{documentTemplatePart.readOnly}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.documentTemplatePart.documentTemplate">Document Template</span></dt>
+                <dd>
+                    <div *ngIf="documentTemplatePart.documentTemplate">
+                        <a [routerLink]="['/document-template', documentTemplatePart.documentTemplate?.id, 'view']">{{documentTemplatePart.documentTemplate?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/document-template-part', documentTemplatePart.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

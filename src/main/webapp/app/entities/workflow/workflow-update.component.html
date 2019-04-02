@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-workflow-heading" jhiTranslate="jhipsterSampleApplicationApp.workflow.home.createOrEditLabel">Create or edit a Workflow</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!workflow.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="workflow.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.workflow.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" [(ngModel)]="workflow.status" id="field_status" >
+                        <option value="IN_PROGRESS">{{'jhipsterSampleApplicationApp.WorkflowStatus.IN_PROGRESS' | translate}}</option>
+                        <option value="COMPLETED">{{'jhipsterSampleApplicationApp.WorkflowStatus.COMPLETED' | translate}}</option>
+                        <option value="PAUSED">{{'jhipsterSampleApplicationApp.WorkflowStatus.PAUSED' | translate}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.workflow.version" for="field_version">Version</label>
+                    <select class="form-control" id="field_version" name="version" [(ngModel)]="workflow.version" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="versionOption.id === workflow.version?.id ? workflow.version : versionOption" *ngFor="let versionOption of versions; trackBy: trackVersionById">{{versionOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

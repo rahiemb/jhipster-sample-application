@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-version-heading" jhiTranslate="jhipsterSampleApplicationApp.version.home.createOrEditLabel">Create or edit a Version</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!version.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="version.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.version.versionMajor" for="field_versionMajor">Version Major</label>
+                    <input type="number" class="form-control" name="versionMajor" id="field_versionMajor"
+                        [(ngModel)]="version.versionMajor" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.version.versionMinor" for="field_versionMinor">Version Minor</label>
+                    <input type="number" class="form-control" name="versionMinor" id="field_versionMinor"
+                        [(ngModel)]="version.versionMinor" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.version.versionDraft" for="field_versionDraft">Version Draft</label>
+                    <input type="number" class="form-control" name="versionDraft" id="field_versionDraft"
+                        [(ngModel)]="version.versionDraft" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.version.published" for="field_published">Published</label>
+                    <input type="checkbox" class="form-control" name="published" id="field_published"
+                        [(ngModel)]="version.published" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.version.document" for="field_document">Document</label>
+                    <select class="form-control" id="field_document" name="document" [(ngModel)]="version.document" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="documentOption.id === version.document?.id ? version.document : documentOption" *ngFor="let documentOption of documents; trackBy: trackDocumentById">{{documentOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.version.summary" for="field_summary">Summary</label>
+                    <select class="form-control" id="field_summary" name="summary" [(ngModel)]="version.summary">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="versionSummaryOption.id === version.summary?.id ? version.summary : versionSummaryOption" *ngFor="let versionSummaryOption of summaries; trackBy: trackVersionSummaryById">{{versionSummaryOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

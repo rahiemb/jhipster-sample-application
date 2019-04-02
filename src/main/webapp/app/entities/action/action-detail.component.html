@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="action">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.action.detail.title">Action</span> {{action.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.action.step">Step</span></dt>
+                <dd>
+                    <span>{{action.step}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.action.recipient">Recipient</span></dt>
+                <dd>
+                    <span>{{action.recipient}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.action.notified">Notified</span></dt>
+                <dd>
+                    <span>{{action.notified}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.action.originationTimestamp">Origination Timestamp</span></dt>
+                <dd>
+                    <span>{{action.originationTimestamp}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.action.responseTimestamp">Response Timestamp</span></dt>
+                <dd>
+                    <span>{{action.responseTimestamp}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.action.recipient">Recipient</span></dt>
+                <dd>
+                    {{action.recipient?.id}}
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.action.version">Version</span></dt>
+                <dd>
+                    <div *ngIf="action.version">
+                        <a [routerLink]="['/version', action.version?.id, 'view']">{{action.version?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.action.step">Step</span></dt>
+                <dd>
+                    <div *ngIf="action.step">
+                        <a [routerLink]="['/step', action.step?.id, 'view']">{{action.step?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/action', action.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

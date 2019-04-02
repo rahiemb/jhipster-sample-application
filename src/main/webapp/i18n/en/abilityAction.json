@@ -1,0 +1,10 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "AbilityAction": {
+            "null": "",
+            "VIEW": "VIEW",
+            "EDIT": "EDIT",
+            "PUBLISH": "PUBLISH"
+        }
+    }
+}

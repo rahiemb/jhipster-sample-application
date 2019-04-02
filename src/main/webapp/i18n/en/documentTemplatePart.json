@@ -1,0 +1,24 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "documentTemplatePart": {
+            "home": {
+                "title": "Document Template Parts",
+                "createLabel": "Create a new Document Template Part",
+                "createOrEditLabel": "Create or edit a Document Template Part"
+            },
+            "created": "A new Document Template Part is created with identifier {{ param }}",
+            "updated": "A Document Template Part is updated with identifier {{ param }}",
+            "deleted": "A Document Template Part is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Document Template Part {{ id }}?"
+            },
+            "detail": {
+                "title": "Document Template Part"
+            },
+            "name": "Name",
+            "text": "Text",
+            "readOnly": "Read Only",
+            "documentTemplate": "Document Template"
+        }
+    }
+}

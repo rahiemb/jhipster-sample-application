@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="step">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.step.detail.title">Step</span> {{step.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.step.manager">Manager</span></dt>
+                <dd>
+                    <span>{{step.manager}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.step.workflow">Workflow</span></dt>
+                <dd>
+                    <span>{{step.workflow}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.step.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterSampleApplicationApp.StepType.' + step.type}}">{{step.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.step.attachments">Attachments</span></dt>
+                <dd>
+                    <span>{{step.attachments}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.step.sender">Sender</span></dt>
+                <dd>
+                    {{step.sender?.id}}
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.step.users">Users</span></dt>
+                <dd>
+                    <span *ngFor="let users of step.users; let last = last">
+                        <a [routerLink]="['/users', users?.id, 'view' ]">{{users.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.step.workflow">Workflow</span></dt>
+                <dd>
+                    <div *ngIf="step.workflow">
+                        <a [routerLink]="['/workflow', step.workflow?.id, 'view']">{{step.workflow?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/step', step.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

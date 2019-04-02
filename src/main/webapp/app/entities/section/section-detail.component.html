@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="section">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.section.detail.title">Section</span> {{section.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.section.name">Name</span></dt>
+                <dd>
+                    <span>{{section.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.section.code">Code</span></dt>
+                <dd>
+                    <span>{{section.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.section.seed">Seed</span></dt>
+                <dd>
+                    <span>{{section.seed}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.section.mask">Mask</span></dt>
+                <dd>
+                    <span>{{section.mask}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.section.description">Description</span></dt>
+                <dd>
+                    <span>{{section.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.section.enabled">Enabled</span></dt>
+                <dd>
+                    <span>{{section.enabled}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.section.link">Link</span></dt>
+                <dd>
+                    <span>{{section.link}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.section.orderId">Order Id</span></dt>
+                <dd>
+                    <span>{{section.orderId}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.section.retired">Retired</span></dt>
+                <dd>
+                    <span>{{section.retired}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.section.retiredDate">Retired Date</span></dt>
+                <dd>
+                    <span>{{section.retiredDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.section.retiredNote">Retired Note</span></dt>
+                <dd>
+                    <span>{{section.retiredNote}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.section.manual">Manual</span></dt>
+                <dd>
+                    <div *ngIf="section.manual">
+                        <a [routerLink]="['/manual', section.manual?.id, 'view']">{{section.manual?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.section.lock">Lock</span></dt>
+                <dd>
+                    <div *ngIf="section.lock">
+                        <a [routerLink]="['/lock', section.lock?.id, 'view']">{{section.lock?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/section', section.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

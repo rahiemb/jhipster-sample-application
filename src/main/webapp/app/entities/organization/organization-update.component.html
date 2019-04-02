@@ -1,0 +1,113 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-organization-heading" jhiTranslate="jhipsterSampleApplicationApp.organization.home.createOrEditLabel">Create or edit a Organization</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!organization.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="organization.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.organization.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="organization.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.organization.enabled" for="field_enabled">Enabled</label>
+                    <input type="checkbox" class="form-control" name="enabled" id="field_enabled"
+                        [(ngModel)]="organization.enabled" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.organization.orderId" for="field_orderId">Order Id</label>
+                    <input type="number" class="form-control" name="orderId" id="field_orderId"
+                        [(ngModel)]="organization.orderId" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.organization.siteUrl" for="field_siteUrl">Site Url</label>
+                    <input type="text" class="form-control" name="siteUrl" id="field_siteUrl"
+                        [(ngModel)]="organization.siteUrl" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.organization.repository" for="field_repository">Repository</label>
+                    <input type="text" class="form-control" name="repository" id="field_repository"
+                        [(ngModel)]="organization.repository" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.organization.thumbnail" for="field_thumbnail">Thumbnail</label>
+                    <div>
+                        <img [src]="'data:' + organization.thumbnailContentType + ';base64,' + organization.thumbnail" style="max-height: 100px;" *ngIf="organization.thumbnail" alt="organization image"/>
+                        <div *ngIf="organization.thumbnail" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{organization.thumbnailContentType}}, {{byteSize(organization.thumbnail)}}</span>
+                            <button type="button" (click)="clearInputImage('thumbnail', 'thumbnailContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_thumbnail" (change)="setFileData($event, organization, 'thumbnail', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="thumbnail" id="field_thumbnail"
+                        [(ngModel)]="organization.thumbnail" />
+                    <input type="hidden" class="form-control" name="thumbnailContentType" id="field_thumbnailContentType"
+                        [(ngModel)]="organization.thumbnailContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.organization.sorlCore" for="field_sorlCore">Sorl Core</label>
+                    <input type="text" class="form-control" name="sorlCore" id="field_sorlCore"
+                        [(ngModel)]="organization.sorlCore" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.organization.approvalDateEnabled" for="field_approvalDateEnabled">Approval Date Enabled</label>
+                    <input type="checkbox" class="form-control" name="approvalDateEnabled" id="field_approvalDateEnabled"
+                        [(ngModel)]="organization.approvalDateEnabled" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.organization.effectiveDateEnabled" for="field_effectiveDateEnabled">Effective Date Enabled</label>
+                    <input type="checkbox" class="form-control" name="effectiveDateEnabled" id="field_effectiveDateEnabled"
+                        [(ngModel)]="organization.effectiveDateEnabled" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.organization.originalDateEnabled" for="field_originalDateEnabled">Original Date Enabled</label>
+                    <input type="checkbox" class="form-control" name="originalDateEnabled" id="field_originalDateEnabled"
+                        [(ngModel)]="organization.originalDateEnabled" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.organization.reviewDateEnabled" for="field_reviewDateEnabled">Review Date Enabled</label>
+                    <input type="checkbox" class="form-control" name="reviewDateEnabled" id="field_reviewDateEnabled"
+                        [(ngModel)]="organization.reviewDateEnabled" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.organization.revisionDateEnabled" for="field_revisionDateEnabled">Revision Date Enabled</label>
+                    <input type="checkbox" class="form-control" name="revisionDateEnabled" id="field_revisionDateEnabled"
+                        [(ngModel)]="organization.revisionDateEnabled" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.organization.supersedesDateEnabled" for="field_supersedesDateEnabled">Supersedes Date Enabled</label>
+                    <input type="checkbox" class="form-control" name="supersedesDateEnabled" id="field_supersedesDateEnabled"
+                        [(ngModel)]="organization.supersedesDateEnabled" />
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="jhipsterSampleApplicationApp.organization.groups" for="field_groups">Groups</label>
+                    <select class="form-control" id="field_groups" multiple name="groups" [(ngModel)]="organization.groups">
+                        <option [ngValue]="getSelected(organization.groups, userGroupOption)" *ngFor="let userGroupOption of usergroups; trackBy: trackUserGroupById">{{userGroupOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="jhipsterSampleApplicationApp.organization.roles" for="field_roles">Roles</label>
+                    <select class="form-control" id="field_roles" multiple name="roles" [(ngModel)]="organization.roles">
+                        <option [ngValue]="getSelected(organization.roles, roleOption)" *ngFor="let roleOption of roles; trackBy: trackRoleById">{{roleOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

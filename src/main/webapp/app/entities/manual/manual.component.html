@@ -1,0 +1,94 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.manual.home.title">Manuals</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-manual" [routerLink]="['/manual/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jhipsterSampleApplicationApp.manual.home.createLabel">
+            Create new Manual
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="manuals">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.manual.name">Name</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.manual.code">Code</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.manual.enabled">Enabled</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.manual.link">Link</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.manual.description">Description</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.manual.trackChangesEnabled">Track Changes Enabled</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.manual.retired">Retired</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.manual.retiredDate">Retired Date</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.manual.retiredNote">Retired Note</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.manual.lock">Lock</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.manual.defaultTemplate">Default Template</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.manual.manualType">Manual Type</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.manual.organization">Organization</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let manual of manuals ;trackBy: trackId">
+                <td><a [routerLink]="['/manual', manual.id, 'view' ]">{{manual.id}}</a></td>
+                <td>{{manual.name}}</td>
+                <td>{{manual.code}}</td>
+                <td>{{manual.enabled}}</td>
+                <td>{{manual.link}}</td>
+                <td>{{manual.description}}</td>
+                <td>{{manual.trackChangesEnabled}}</td>
+                <td>{{manual.retired}}</td>
+                <td>{{manual.retiredDate | date:'mediumDate'}}</td>
+                <td>{{manual.retiredNote}}</td>
+                <td>
+                    <div *ngIf="manual.lock">
+                        <a [routerLink]="['../lock', manual.lock?.id, 'view' ]" >{{manual.lock?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="manual.defaultTemplate">
+                        <a [routerLink]="['../document-template', manual.defaultTemplate?.id, 'view' ]" >{{manual.defaultTemplate?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <span *ngFor="let manualType of manual.manualTypes; let last = last">
+                            <a class="form-control-static" [routerLink]="['../manual-type', manualType?.id, 'view' ]">{{manualType.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <div *ngIf="manual.organization">
+                        <a [routerLink]="['../organization', manual.organization?.id, 'view' ]" >{{manual.organization?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/manual', manual.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/manual', manual.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'manual', { outlets: { popup: manual.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

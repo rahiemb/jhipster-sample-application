@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Document.
+    -->
+    <changeSet id="20190402214259-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="lock_id"
+                                 baseTableName="document"
+                                 constraintName="fk_document_lock_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="lock"/>
+
+        <addForeignKeyConstraint baseColumnNames="workflow_id"
+                                 baseTableName="document"
+                                 constraintName="fk_document_workflow_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="workflow"/>
+
+        <addForeignKeyConstraint baseColumnNames="document_id"
+                                 baseTableName="document_keywords"
+                                 constraintName="fk_document_keywords_document_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="document"/>
+        <addForeignKeyConstraint baseColumnNames="keywords_id"
+                                 baseTableName="document_keywords"
+                                 constraintName="fk_document_keywords_keywords_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="keyword"/>
+        
+        <addForeignKeyConstraint baseColumnNames="document_id"
+                                 baseTableName="document_categories"
+                                 constraintName="fk_document_categories_document_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="document"/>
+        <addForeignKeyConstraint baseColumnNames="categories_id"
+                                 baseTableName="document_categories"
+                                 constraintName="fk_document_categories_categories_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="category"/>
+        
+        <addForeignKeyConstraint baseColumnNames="document_id"
+                                 baseTableName="document_participants"
+                                 constraintName="fk_document_participants_document_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="document"/>
+        <addForeignKeyConstraint baseColumnNames="participants_id"
+                                 baseTableName="document_participants"
+                                 constraintName="fk_document_participants_participants_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="participant"/>
+        
+        <addForeignKeyConstraint baseColumnNames="section_id"
+                                 baseTableName="document"
+                                 constraintName="fk_document_section_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="section"/>
+
+    </changeSet>
+</databaseChangeLog>

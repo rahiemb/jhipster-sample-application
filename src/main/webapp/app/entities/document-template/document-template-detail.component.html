@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="documentTemplate">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.documentTemplate.detail.title">Document Template</span> {{documentTemplate.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.documentTemplate.name">Name</span></dt>
+                <dd>
+                    <span>{{documentTemplate.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.documentTemplate.primaryHeader">Primary Header</span></dt>
+                <dd>
+                    <span>{{documentTemplate.primaryHeader}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.documentTemplate.primaryFooter">Primary Footer</span></dt>
+                <dd>
+                    <span>{{documentTemplate.primaryFooter}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.documentTemplate.appendixHeader">Appendix Header</span></dt>
+                <dd>
+                    <span>{{documentTemplate.appendixHeader}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.documentTemplate.appendixFooter">Appendix Footer</span></dt>
+                <dd>
+                    <span>{{documentTemplate.appendixFooter}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.documentTemplate.enabled">Enabled</span></dt>
+                <dd>
+                    <span>{{documentTemplate.enabled}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.documentTemplate.manual">Manual</span></dt>
+                <dd>
+                    <div *ngIf="documentTemplate.manual">
+                        <a [routerLink]="['/manual', documentTemplate.manual?.id, 'view']">{{documentTemplate.manual?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/document-template', documentTemplate.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

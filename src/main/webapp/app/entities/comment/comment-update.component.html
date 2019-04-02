@@ -1,0 +1,104 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-comment-heading" jhiTranslate="jhipsterSampleApplicationApp.comment.home.createOrEditLabel">Create or edit a Comment</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!comment.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="comment.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.comment.text" for="field_text">Text</label>
+                    <input type="text" class="form-control" name="text" id="field_text"
+                        [(ngModel)]="comment.text" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.comment.context" for="field_context">Context</label>
+                    <select class="form-control" name="context" [(ngModel)]="comment.context" id="field_context" >
+                        <option value="APPENDIX">{{'jhipsterSampleApplicationApp.CommentContext.APPENDIX' | translate}}</option>
+                        <option value="ACKNOWLEDGEMENT">{{'jhipsterSampleApplicationApp.CommentContext.ACKNOWLEDGEMENT' | translate}}</option>
+                        <option value="DOCUMENT">{{'jhipsterSampleApplicationApp.CommentContext.DOCUMENT' | translate}}</option>
+                        <option value="REVIEW">{{'jhipsterSampleApplicationApp.CommentContext.REVIEW' | translate}}</option>
+                        <option value="SECTION">{{'jhipsterSampleApplicationApp.CommentContext.SECTION' | translate}}</option>
+                        <option value="SIGNATURE">{{'jhipsterSampleApplicationApp.CommentContext.SIGNATURE' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.comment.user" for="field_user">User</label>
+                    <input type="text" class="form-control" name="user" id="field_user"
+                        [(ngModel)]="comment.user" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.comment.timestamp" for="field_timestamp">Timestamp</label>
+                    <div class="d-flex">
+                        <input id="field_timestamp" type="datetime-local" class="form-control" name="timestamp" [(ngModel)]="timestamp" placeholder="YYYY-MM-DD HH:mm"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.comment.replyTo" for="field_replyTo">Reply To</label>
+                    <input type="text" class="form-control" name="replyTo" id="field_replyTo"
+                        [(ngModel)]="comment.replyTo" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.comment.itemId" for="field_itemId">Item Id</label>
+                    <input type="text" class="form-control" name="itemId" id="field_itemId"
+                        [(ngModel)]="comment.itemId" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.comment.replyTo" for="field_replyTo">Reply To</label>
+                    <select class="form-control" id="field_replyTo" name="replyTo" [(ngModel)]="comment.replyTo">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="commentOption.id === comment.replyTo?.id ? comment.replyTo : commentOption" *ngFor="let commentOption of replytos; trackBy: trackCommentById">{{commentOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.comment.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" [(ngModel)]="comment.user">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="usersOption.id === comment.user?.id ? comment.user : usersOption" *ngFor="let usersOption of users; trackBy: trackUsersById">{{usersOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.comment.comment" for="field_comment">Comment</label>
+                    <select class="form-control" id="field_comment" name="comment" [(ngModel)]="comment.comment" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="commentOption.id === comment.comment?.id ? comment.comment : commentOption" *ngFor="let commentOption of comments; trackBy: trackCommentById">{{commentOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.comment.document" for="field_document">Document</label>
+                    <select class="form-control" id="field_document" name="document" [(ngModel)]="comment.document" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="documentOption.id === comment.document?.id ? comment.document : documentOption" *ngFor="let documentOption of documents; trackBy: trackDocumentById">{{documentOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.comment.step" for="field_step">Step</label>
+                    <select class="form-control" id="field_step" name="step" [(ngModel)]="comment.step" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="stepOption.id === comment.step?.id ? comment.step : stepOption" *ngFor="let stepOption of steps; trackBy: trackStepById">{{stepOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.comment.users" for="field_users">Users</label>
+                    <select class="form-control" id="field_users" name="users" [(ngModel)]="comment.users" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="usersOption.id === comment.users?.id ? comment.users : usersOption" *ngFor="let usersOption of users; trackBy: trackUsersById">{{usersOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="ability">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.ability.detail.title">Ability</span> {{ability.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.ability.resourceId">Resource Id</span></dt>
+                <dd>
+                    <span>{{ability.resourceId}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.ability.action">Action</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterSampleApplicationApp.AbilityAction.' + ability.action}}">{{ability.action}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.ability.scope">Scope</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterSampleApplicationApp.AbilityScope.' + ability.scope}}">{{ability.scope}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ability', ability.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

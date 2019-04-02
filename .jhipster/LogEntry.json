@@ -1,0 +1,66 @@
+{
+    "name": "LogEntry",
+    "fields": [
+        {
+            "fieldName": "type",
+            "fieldType": "ObjectType",
+            "fieldValues": "CATEGORY,DOCUMENT,MANUAL,NOTIFICATION,ORGANIZATION,REPORT,SECTION,SECURITY,SYSTEM,USER"
+        },
+        {
+            "fieldName": "level",
+            "fieldType": "LogLevel",
+            "fieldValues": "INFO,WARNING,ERROR"
+        },
+        {
+            "fieldName": "objectId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "details",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "user",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "timestamp",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "document",
+            "otherEntityName": "document",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "manual",
+            "otherEntityName": "manual",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "organization",
+            "otherEntityName": "organization",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "section",
+            "otherEntityName": "section",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190402214306",
+    "entityTableName": "log_entry",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

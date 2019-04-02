@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="userGroup">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.userGroup.detail.title">User Group</span> {{userGroup.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.userGroup.name">Name</span></dt>
+                <dd>
+                    <span>{{userGroup.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.userGroup.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterSampleApplicationApp.GroupType.' + userGroup.type}}">{{userGroup.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.userGroup.ad">Ad</span></dt>
+                <dd>
+                    <span>{{userGroup.ad}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.userGroup.roles">Roles</span></dt>
+                <dd>
+                    <span *ngFor="let roles of userGroup.roles; let last = last">
+                        <a [routerLink]="['/role', roles?.id, 'view' ]">{{roles.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.userGroup.abilities">Abilities</span></dt>
+                <dd>
+                    <span *ngFor="let abilities of userGroup.abilities; let last = last">
+                        <a [routerLink]="['/ability', abilities?.id, 'view' ]">{{abilities.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.userGroup.step">Step</span></dt>
+                <dd>
+                    <div *ngIf="userGroup.step">
+                        <a [routerLink]="['/step', userGroup.step?.id, 'view']">{{userGroup.step?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/user-group', userGroup.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

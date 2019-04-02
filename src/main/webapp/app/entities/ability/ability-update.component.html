@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-ability-heading" jhiTranslate="jhipsterSampleApplicationApp.ability.home.createOrEditLabel">Create or edit a Ability</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!ability.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="ability.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.ability.resourceId" for="field_resourceId">Resource Id</label>
+                    <input type="number" class="form-control" name="resourceId" id="field_resourceId"
+                        [(ngModel)]="ability.resourceId" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.ability.action" for="field_action">Action</label>
+                    <select class="form-control" name="action" [(ngModel)]="ability.action" id="field_action" >
+                        <option value="VIEW">{{'jhipsterSampleApplicationApp.AbilityAction.VIEW' | translate}}</option>
+                        <option value="EDIT">{{'jhipsterSampleApplicationApp.AbilityAction.EDIT' | translate}}</option>
+                        <option value="PUBLISH">{{'jhipsterSampleApplicationApp.AbilityAction.PUBLISH' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.ability.scope" for="field_scope">Scope</label>
+                    <select class="form-control" name="scope" [(ngModel)]="ability.scope" id="field_scope" >
+                        <option value="ALLOW">{{'jhipsterSampleApplicationApp.AbilityScope.ALLOW' | translate}}</option>
+                        <option value="DENY">{{'jhipsterSampleApplicationApp.AbilityScope.DENY' | translate}}</option>
+                    </select>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

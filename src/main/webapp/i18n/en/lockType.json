@@ -1,0 +1,9 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "LockType": {
+            "null": "",
+            "CHECKOUT": "CHECKOUT",
+            "LOCK": "LOCK"
+        }
+    }
+}

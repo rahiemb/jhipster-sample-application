@@ -1,0 +1,91 @@
+{
+    "name": "Step",
+    "fields": [
+        {
+            "fieldName": "manager",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "workflow",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "StepType",
+            "fieldValues": "ACKNOWLEDGEMENT,DRAFT,LOCK,REVIEW,PUBLISH,RETIRE,SIGNATURE"
+        },
+        {
+            "fieldName": "attachments",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "step",
+            "relationshipName": "sender",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "userGroup",
+            "otherEntityRelationshipName": "step",
+            "relationshipName": "groups"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "attachment",
+            "otherEntityRelationshipName": "step",
+            "relationshipName": "attachments"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "comment",
+            "otherEntityRelationshipName": "step",
+            "relationshipName": "comments"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "email",
+            "otherEntityRelationshipName": "step",
+            "relationshipName": "emails"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "action",
+            "otherEntityRelationshipName": "step",
+            "relationshipName": "actions"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "notification",
+            "otherEntityRelationshipName": "step",
+            "relationshipName": "notifications"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "users",
+            "otherEntityRelationshipName": "step",
+            "relationshipName": "users",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipName": "workflow",
+            "otherEntityName": "workflow",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190402214317",
+    "entityTableName": "step",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

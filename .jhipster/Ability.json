@@ -1,0 +1,54 @@
+{
+    "name": "Ability",
+    "fields": [
+        {
+            "fieldName": "resourceId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "action",
+            "fieldType": "AbilityAction",
+            "fieldValues": "VIEW,EDIT,PUBLISH"
+        },
+        {
+            "fieldName": "scope",
+            "fieldType": "AbilityScope",
+            "fieldValues": "ALLOW,DENY"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "users",
+            "otherEntityRelationshipName": "abilities",
+            "relationshipName": "users",
+            "otherEntityField": "id",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "userGroup",
+            "otherEntityRelationshipName": "abilities",
+            "relationshipName": "groups",
+            "otherEntityField": "id",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "role",
+            "otherEntityRelationshipName": "abilities",
+            "relationshipName": "roles",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20190402214253",
+    "entityTableName": "ability",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,147 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="document">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.document.detail.title">Document</span> {{document.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.name">Name</span></dt>
+                <dd>
+                    <span>{{document.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.code">Code</span></dt>
+                <dd>
+                    <span>{{document.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.seed">Seed</span></dt>
+                <dd>
+                    <span>{{document.seed}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.description">Description</span></dt>
+                <dd>
+                    <span>{{document.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.enabled">Enabled</span></dt>
+                <dd>
+                    <span>{{document.enabled}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.link">Link</span></dt>
+                <dd>
+                    <span>{{document.link}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.orderId">Order Id</span></dt>
+                <dd>
+                    <span>{{document.orderId}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.effectiveDate">Effective Date</span></dt>
+                <dd>
+                    <span>{{document.effectiveDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.approvalDate">Approval Date</span></dt>
+                <dd>
+                    <span>{{document.approvalDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.supersedesDate">Supersedes Date</span></dt>
+                <dd>
+                    <span>{{document.supersedesDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.originalDate">Original Date</span></dt>
+                <dd>
+                    <span>{{document.originalDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.reviewDate">Review Date</span></dt>
+                <dd>
+                    <span>{{document.reviewDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.revisionDate">Revision Date</span></dt>
+                <dd>
+                    <span>{{document.revisionDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.expirationType">Expiration Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterSampleApplicationApp.ExpirationType.' + document.expirationType}}">{{document.expirationType}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.expirationDate">Expiration Date</span></dt>
+                <dd>
+                    <span>{{document.expirationDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.expirationPeriod">Expiration Period</span></dt>
+                <dd>
+                    <span>{{document.expirationPeriod}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.expirationInterval">Expiration Interval</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterSampleApplicationApp.TimeInterval.' + document.expirationInterval}}">{{document.expirationInterval}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.expirationBase">Expiration Base</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterSampleApplicationApp.ExpirationBase.' + document.expirationBase}}">{{document.expirationBase}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.tableOfContents">Table Of Contents</span></dt>
+                <dd>
+                    <span>{{document.tableOfContents}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.retired">Retired</span></dt>
+                <dd>
+                    <span>{{document.retired}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.retiredDate">Retired Date</span></dt>
+                <dd>
+                    <span>{{document.retiredDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.retiredNote">Retired Note</span></dt>
+                <dd>
+                    <span>{{document.retiredNote}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.lock">Lock</span></dt>
+                <dd>
+                    <div *ngIf="document.lock">
+                        <a [routerLink]="['/lock', document.lock?.id, 'view']">{{document.lock?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.workflow">Workflow</span></dt>
+                <dd>
+                    <div *ngIf="document.workflow">
+                        <a [routerLink]="['/workflow', document.workflow?.id, 'view']">{{document.workflow?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.keywords">Keywords</span></dt>
+                <dd>
+                    <span *ngFor="let keywords of document.keywords; let last = last">
+                        <a [routerLink]="['/keyword', keywords?.id, 'view' ]">{{keywords.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.categories">Categories</span></dt>
+                <dd>
+                    <span *ngFor="let categories of document.categories; let last = last">
+                        <a [routerLink]="['/category', categories?.id, 'view' ]">{{categories.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.participants">Participants</span></dt>
+                <dd>
+                    <span *ngFor="let participants of document.participants; let last = last">
+                        <a [routerLink]="['/participant', participants?.id, 'view' ]">{{participants.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.document.section">Section</span></dt>
+                <dd>
+                    <div *ngIf="document.section">
+                        <a [routerLink]="['/section', document.section?.id, 'view']">{{document.section?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/document', document.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

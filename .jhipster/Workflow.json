@@ -1,0 +1,33 @@
+{
+    "name": "Workflow",
+    "fields": [
+        {
+            "fieldName": "status",
+            "fieldType": "WorkflowStatus",
+            "fieldValues": "IN_PROGRESS,COMPLETED,PAUSED"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "version",
+            "otherEntityName": "version",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "step",
+            "otherEntityRelationshipName": "workflow",
+            "relationshipName": "steps"
+        }
+    ],
+    "changelogDate": "20190402214322",
+    "entityTableName": "workflow",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

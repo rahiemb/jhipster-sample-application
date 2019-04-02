@@ -1,0 +1,87 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="users">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.users.detail.title">Users</span> {{users.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.users.firstName">First Name</span></dt>
+                <dd>
+                    <span>{{users.firstName}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.users.lastName">Last Name</span></dt>
+                <dd>
+                    <span>{{users.lastName}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.users.email">Email</span></dt>
+                <dd>
+                    <span>{{users.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.users.enabled">Enabled</span></dt>
+                <dd>
+                    <span>{{users.enabled}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.users.uid">Uid</span></dt>
+                <dd>
+                    <span>{{users.uid}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.users.hopkinsId">Hopkins Id</span></dt>
+                <dd>
+                    <span>{{users.hopkinsId}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.users.deferToProxy">Defer To Proxy</span></dt>
+                <dd>
+                    <span>{{users.deferToProxy}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.users.proxy">Proxy</span></dt>
+                <dd>
+                    <div *ngIf="users.proxy">
+                        <a [routerLink]="['/users', users.proxy?.id, 'view']">{{users.proxy?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.users.organization">Organization</span></dt>
+                <dd>
+                    <div *ngIf="users.organization">
+                        <a [routerLink]="['/organization', users.organization?.id, 'view']">{{users.organization?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.users.groups">Groups</span></dt>
+                <dd>
+                    <span *ngFor="let groups of users.groups; let last = last">
+                        <a [routerLink]="['/user-group', groups?.id, 'view' ]">{{groups.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.users.groups">Groups</span></dt>
+                <dd>
+                    <span *ngFor="let groups of users.groups; let last = last">
+                        <a [routerLink]="['/user-group', groups?.id, 'view' ]">{{groups.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.users.roles">Roles</span></dt>
+                <dd>
+                    <span *ngFor="let roles of users.roles; let last = last">
+                        <a [routerLink]="['/role', roles?.id, 'view' ]">{{roles.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.users.abilities">Abilities</span></dt>
+                <dd>
+                    <span *ngFor="let abilities of users.abilities; let last = last">
+                        <a [routerLink]="['/ability', abilities?.id, 'view' ]">{{abilities.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/users', users.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

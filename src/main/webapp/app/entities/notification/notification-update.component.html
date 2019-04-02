@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-notification-heading" jhiTranslate="jhipsterSampleApplicationApp.notification.home.createOrEditLabel">Create or edit a Notification</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!notification.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="notification.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.notification.value" for="field_value">Value</label>
+                    <input type="number" class="form-control" name="value" id="field_value"
+                        [(ngModel)]="notification.value" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.notification.interval" for="field_interval">Interval</label>
+                    <select class="form-control" name="interval" [(ngModel)]="notification.interval" id="field_interval" >
+                        <option value="DAYS">{{'jhipsterSampleApplicationApp.TimeInterval.DAYS' | translate}}</option>
+                        <option value="WEEKS">{{'jhipsterSampleApplicationApp.TimeInterval.WEEKS' | translate}}</option>
+                        <option value="MONTHS">{{'jhipsterSampleApplicationApp.TimeInterval.MONTHS' | translate}}</option>
+                        <option value="YEARS">{{'jhipsterSampleApplicationApp.TimeInterval.YEARS' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.notification.beforeDate" for="field_beforeDate">Before Date</label>
+                    <div class="input-group">
+                        <input id="field_beforeDate" type="text" class="form-control" name="beforeDate" ngbDatepicker  #beforeDateDp="ngbDatepicker" [(ngModel)]="notification.beforeDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="beforeDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.notification.afterDate" for="field_afterDate">After Date</label>
+                    <div class="input-group">
+                        <input id="field_afterDate" type="text" class="form-control" name="afterDate" ngbDatepicker  #afterDateDp="ngbDatepicker" [(ngModel)]="notification.afterDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="afterDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.notification.sendDate" for="field_sendDate">Send Date</label>
+                    <div class="input-group">
+                        <input id="field_sendDate" type="text" class="form-control" name="sendDate" ngbDatepicker  #sendDateDp="ngbDatepicker" [(ngModel)]="notification.sendDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="sendDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.notification.sender" for="field_sender">Sender</label>
+                    <input type="text" class="form-control" name="sender" id="field_sender"
+                        [(ngModel)]="notification.sender" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.notification.message" for="field_message">Message</label>
+                    <input type="text" class="form-control" name="message" id="field_message"
+                        [(ngModel)]="notification.message" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.notification.sender" for="field_sender">Sender</label>
+                    <select class="form-control" id="field_sender" name="sender" [(ngModel)]="notification.sender">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="usersOption.id === notification.sender?.id ? notification.sender : usersOption" *ngFor="let usersOption of senders; trackBy: trackUsersById">{{usersOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.notification.step" for="field_step">Step</label>
+                    <select class="form-control" id="field_step" name="step" [(ngModel)]="notification.step" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="stepOption.id === notification.step?.id ? notification.step : stepOption" *ngFor="let stepOption of steps; trackBy: trackStepById">{{stepOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

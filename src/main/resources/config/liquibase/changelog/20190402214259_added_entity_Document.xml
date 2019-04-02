@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+    
+    <property name="now" value="GETDATE()" dbms="mssql"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Document.
+    -->
+    <changeSet id="20190402214259-1" author="jhipster">
+        <createTable tableName="document">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="code" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="seed" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="description" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="enabled" type="boolean">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="jhi_link" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="order_id" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="effective_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="approval_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="supersedes_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="original_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="review_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="revision_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="expiration_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="expiration_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="expiration_period" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="expiration_interval" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="expiration_base" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="table_of_contents" type="boolean">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="retired" type="boolean">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="retired_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="retired_note" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="lock_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_document_lock_id" />
+            </column>            <column name="workflow_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_document_workflow_id" />
+            </column>
+            <column name="section_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        
+        <createTable tableName="document_keywords">
+            <column name="keywords_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="document_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="document_id, keywords_id" tableName="document_keywords"/>
+        
+        <createTable tableName="document_categories">
+            <column name="categories_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="document_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="document_id, categories_id" tableName="document_categories"/>
+        
+        <createTable tableName="document_participants">
+            <column name="participants_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="document_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="document_id, participants_id" tableName="document_participants"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>
